@@ -39,7 +39,6 @@ const account = {
         } catch (error) {
             res.send(error)
         }
-        next()
     },
 
 
