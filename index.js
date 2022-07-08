@@ -19,9 +19,24 @@ const cookieParser = require("cookie-parser")
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs")
 app.use(cookieParser())
+app.use(session({ secret: "ciao" }))
 
-app.get('/singup', account.singUp)
+function checkLogin(req, res, next) {
+    if (req.session.user && req.session.user.loggato === true) {
+        next()
+    } else {
+        res.redirect("/login")
+    }
+}
 
-app.post('/singup', account.handleSignUp)
+app.get('/', (req, res) => { res.render("home") })
+
+app.get('/singup', account.singup)
+
+app.get('/login', account.login)
+
+app.post('/singup', account.handleSignup)
+
+app.post('/login', account.handleLogin)
 
 app.listen(port, () => {})
