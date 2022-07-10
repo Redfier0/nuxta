@@ -9,32 +9,27 @@ const account = {
 
     logout: (req, res) => {
         req.session.user = {}
-        res.redirect("/logout")
+        res.redirect("/login")
     },
 
     handleLogin: (req, res, next) => {
         try {
             const { body } = req
             const { wallet, password } = body
-            console.log("fino a qui ok")
             con.query("SELECT * FROM account WHERE wallet = ?", [wallet], async(error, result) => {
                 if (error) {
                     throw error
                 }
                 let account = []
                 if (result.length > 0) {
-                    console.log("bene bene")
                     const validPsw = await bcrypt.compare(password, result[0].password)
                     if (validPsw) {
-                        console.log("perchè cazzo non và")
                         account = result
                         req.session.user = { loggato: true, id: result[0].id }
                         return res.redirect("/")
                     } else {
-                        console.log("qualcosa è andato storto")
                         return res.redirect("/login")
                     }
-
                 }
                 return res.redirect("/login")
             })

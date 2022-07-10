@@ -1,9 +1,17 @@
 <html>
-    <head>
 
-    </head>
+<head>
 
-    <body>
-        
-    </body>
+</head>
+
+<body>
+    <%- include("./components/principali.ejs") %>
+        <% dati.filter(item=>{ %>
+            <h1>
+                <%= item.nome %>
+                    <%= item.quantita %>
+            </h1>
+            <% }) %>
+</body>
+
 </html>

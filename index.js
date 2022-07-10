@@ -9,17 +9,18 @@ const accivment = require("./components/accivment")
 const account = require("./components/account")
 const acqua = require("./components/acqua")
 const cibo = require("./components/cibo")
-const dettagli = require("./components/dettagli")
 const eventi = require("./components/eventi")
+const home = require("./components/home")
 const persone = require("./components/persone")
 const ricompense = require("./components/ricompense")
 const strutture = require("./components/strutture")
+const dati = require("./components/dati")
 const cookieParser = require("cookie-parser")
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs")
 app.use(cookieParser())
-app.use(session({ secret: "ciao" }))
+app.use(session({ secret: "nuxta" }))
 
 function checkLogin(req, res, next) {
     if (req.session.user && req.session.user.loggato === true) {
@@ -29,11 +30,17 @@ function checkLogin(req, res, next) {
     }
 }
 
-app.get('/', (req, res) => { res.render("home") })
+app.get('/', home.home)
 
 app.get('/singup', account.singup)
 
 app.get('/login', account.login)
+
+app.get('/generale', checkLogin, acqua.acqua, cibo.cibo, persone.persone, strutture.strutture, dati.risorse)
+
+app.get('/logout', account.logout)
+
+app.post('/', home.pianetaHome)
 
 app.post('/singup', account.handleSignup)
 
