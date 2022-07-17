@@ -6,6 +6,9 @@
 
 <body>
     <%- include("./components/principali.ejs") %>
+        <a href="/shop">
+            <button>shop</button>
+        </a>
         <% dati.filter(item=>{ %>
             <h1>
                 <%= item.nome %>

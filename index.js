@@ -37,22 +37,38 @@ function checkLogin(req, res, next) {
     if (req.session.user && req.session.user.loggato === true) {
         next()
     } else {
-        res.redirect("/login")
+        res.redirect('/login')
     }
 }
 
 function azzeratutto(req, res) {
-
-    res.redirect("/login")
+    con.query("UPDATE cibo SET quantita = 50 WHERE id_isola = 36 AND id_categoria = 1", (error, result) => {})
+    con.query("UPDATE cibo SET quantita = 0 WHERE id_isola = 36 AND id_categoria = 2", (error, result) => {})
+    con.query("UPDATE cibo SET quantita = 0 WHERE id_isola = 36 AND id_categoria = 3", (error, result) => {})
+    con.query("UPDATE cibo SET quantita = 0 WHERE id_isola = 36 AND id_categoria = 4", (error, result) => {})
+    con.query("UPDATE cibo SET quantita = 0 WHERE id_isola = 36 AND id_categoria = 5", (error, result) => {})
+    con.query("UPDATE cibo SET quantita = 0 WHERE id_isola = 36 AND id_categoria = 6", (error, result) => {})
+    con.query("UPDATE cibo SET quantita = 0 WHERE id_isola = 36 AND id_categoria =7", (error, result) => {})
+    con.query("UPDATE cibo SET quantita = 0 WHERE id_isola = 36 AND id_categoria = 8", (error, result) => {})
+    con.query("UPDATE persone SET quantita = 6 WHERE id_isola = 36 AND id_categoria = 1", (error, result) => {})
+    con.query("UPDATE strutture SET quantita = 1 WHERE id_isola = 36 AND id_categoria = 1", (error, result) => {})
+    con.query("UPDATE strutture SET quantita = 1 WHERE id_isola = 36 AND id_categoria = 2", (error, result) => {})
+    con.query("UPDATE strutture SET quantita = 1 WHERE id_isola = 36 AND id_categoria = 3", (error, result) => {})
+    con.query("UPDATE strutture SET quantita = 1 WHERE id_isola = 36 AND id_categoria = 4", (error, result) => {})
+    res.redirect('/login')
 }
 
-app.get("/", home.home)
+app.get('/', home.home)
 
-app.get("/singup", account.singup)
+app.get('/shop', shop.shop)
 
-app.get("/login", account.login)
+app.get('/singup', account.singup)
 
-app.get("/generale",
+app.get('/login', account.login)
+
+app.get('/azzera', azzeratutto)
+
+app.get('/generale',
     checkLogin,
     acquaUno.acquaUno,
     ciboUno.ciboUno,
@@ -71,12 +87,14 @@ app.get("/generale",
     dati.risorse
 )
 
-app.get("/logout", account.logout)
+app.get('/logout', account.logout)
 
-app.post("/", home.pianetaHome)
+app.post('/', home.pianetaHome)
 
-app.post("/singup", account.handleSignup)
+app.post('/singup', account.handleSignup)
 
-app.post("/login", account.handleLogin)
+app.post('/login', account.handleLogin)
+
+app.post('/shop', checkLogin, shop.handleShop)
 
 app.listen(port, () => {})

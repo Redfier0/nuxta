@@ -8,7 +8,7 @@ const struttureDue = {
         con.query("SELECT * FROM strutture WHERE id_isola = ? AND id_categoria = ?", [id_isola, 2], (error, result) => {
             let strutture = result
             strutture.filter(item => {
-                if (item.id_categoria == 2) {
+                if (item.quantita !== 0) {
                     con.query("SELECT nome FROM categorie_strutture WHERE id = ? ", [2], (error, result) => {
                         let nome = result
                         dati_strutture = { nome: nome[0].nome, quantita: item.quantita }

@@ -3,25 +3,21 @@ const { nextTick } = require("process");
 
 const dati = {
     risorse: async(req, res) => {
-        /* let acqua = req.acqua
-             let cibo = req.cibo
-             let persone = req.persone
-             let strutture = req.strutture*/
-        let acquaUno = req.datiAcquaUno;
-        let ciboUno = req.datiCiboUno;
-        let ciboDue = req.datiCiboDue;
-        let ciboTre = req.datiCiboTre;
-        let ciboQuattro = req.datiCiboQuattro;
-        let ciboCinque = req.datiCiboCinque;
-        let ciboSei = req.datiCiboSei;
-        let ciboSette = req.datiCiboSette;
-        let ciboOtto = req.datiCiboOtto;
-        let personeUno = req.datiPersoneUno;
-        let struttureUno = req.datiStruttureUno;
-        let struttureDue = req.datiStruttureDue;
-        let struttureTre = req.datiStruttureTre;
-        let struttureQuattro = req.datiStruttureQuattro;
-        let dati = [
+        const acquaUno = req.datiAcquaUno;
+        const ciboUno = req.datiCiboUno;
+        const ciboDue = req.datiCiboDue;
+        const ciboTre = req.datiCiboTre;
+        const ciboQuattro = req.datiCiboQuattro;
+        const ciboCinque = req.datiCiboCinque;
+        const ciboSei = req.datiCiboSei;
+        const ciboSette = req.datiCiboSette;
+        const ciboOtto = req.datiCiboOtto;
+        const personeUno = req.datiPersoneUno;
+        const struttureUno = req.datiStruttureUno;
+        const struttureDue = req.datiStruttureDue;
+        const struttureTre = req.datiStruttureTre;
+        const struttureQuattro = req.datiStruttureQuattro;
+        const dati = [
             acquaUno,
             ciboUno,
             ciboDue,
@@ -34,8 +30,8 @@ const dati = {
             personeUno,
             struttureUno,
             struttureDue,
-            //struttureTre,
-            //struttureQuattro
+            struttureTre,
+            struttureQuattro
         ];
         res.render("generale", { dati });
     },

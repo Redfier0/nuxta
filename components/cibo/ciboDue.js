@@ -5,11 +5,11 @@ const ciboDue = {
     ciboDue: (req, res, next) => {
         let id_isola = req.session.user.id
         let dati_cibo = {}
-        con.query("SELECT * FROM cibo WHERE id_isola = ?", [id_isola], (error, result) => {
+        con.query("SELECT * FROM cibo WHERE id_isola = ? AND id_categoria = ?", [id_isola, 2], (error, result) => {
             let cibo = result
             let quantitaCibo = result[0].quantita
             cibo.filter(item => {
-                if (item.id_categoria == 2) {
+                if (item.quantita !== 0) {
                     setInterval(() => {
                         quantitaCibo = quantitaCibo + 1
                         con.query("UPDATE cibo SET quantita = ? WHERE id_isola = ?", [quantitaCibo, id_isola], (error, result) => {})
