@@ -1,23 +1,34 @@
 const express = require("express")
-const session = require('express-session')
+const session = require("express-session")
 const { urlencoded } = require("express")
 const app = express()
 const port = 3000
-const bodyParser = require('body-parser')
+const bodyParser = require("body-parser")
 const con = require("./connection")
 const accivment = require("./components/accivment")
 const account = require("./components/account")
-const acqua = require("./components/acqua")
-const cibo = require("./components/cibo")
+const acquaUno = require("./components/acqua/acquaUno")
+const ciboUno = require("./components/cibo/ciboUno")
+const ciboDue = require("./components/cibo/ciboDue")
+const ciboTre = require("./components/cibo/ciboTre")
+const ciboQuattro = require("./components/cibo/ciboQuattro")
+const ciboCinque = require("./components/cibo/ciboCinque")
+const ciboSei = require("./components/cibo/ciboSei")
+const ciboSette = require("./components/cibo/ciboSette")
+const ciboOtto = require("./components/cibo/ciboOtto")
 const eventi = require("./components/eventi")
 const home = require("./components/home")
-const persone = require("./components/persone")
+const personeUno = require("./components/persone/personeUno")
 const ricompense = require("./components/ricompense")
-const strutture = require("./components/strutture")
+const struttureUno = require("./components/strutture/struttureUno")
+const struttureDue = require("./components/strutture/struttureDue")
+const struttureTre = require("./components/strutture/struttureTre")
+const struttureQuattro = require("./components/strutture/struttureQuattro")
 const dati = require("./components/dati")
+const shop = require("./components/shop")
 const cookieParser = require("cookie-parser")
 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }))
 app.set("view engine", "ejs")
 app.use(cookieParser())
 app.use(session({ secret: "nuxta" }))
@@ -30,20 +41,42 @@ function checkLogin(req, res, next) {
     }
 }
 
-app.get('/', home.home)
+function azzeratutto(req, res) {
 
-app.get('/singup', account.singup)
+    res.redirect("/login")
+}
 
-app.get('/login', account.login)
+app.get("/", home.home)
 
-app.get('/generale', checkLogin, acqua.acqua, cibo.cibo, persone.persone, strutture.strutture, dati.risorse)
+app.get("/singup", account.singup)
 
-app.get('/logout', account.logout)
+app.get("/login", account.login)
 
-app.post('/', home.pianetaHome)
+app.get("/generale",
+    checkLogin,
+    acquaUno.acquaUno,
+    ciboUno.ciboUno,
+    ciboDue.ciboDue,
+    ciboTre.ciboTre,
+    ciboQuattro.ciboQuattro,
+    ciboCinque.ciboCinque,
+    ciboSei.ciboSei,
+    ciboSette.ciboSette,
+    ciboOtto.ciboOtto,
+    personeUno.personeUno,
+    struttureUno.struttureUno,
+    struttureDue.struttureDue,
+    struttureTre.struttureTre,
+    struttureQuattro.struttureQuattro,
+    dati.risorse
+)
 
-app.post('/singup', account.handleSignup)
+app.get("/logout", account.logout)
 
-app.post('/login', account.handleLogin)
+app.post("/", home.pianetaHome)
+
+app.post("/singup", account.handleSignup)
+
+app.post("/login", account.handleLogin)
 
 app.listen(port, () => {})

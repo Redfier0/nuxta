@@ -67,6 +67,7 @@ const account = {
                         con.query("INSERT INTO acqua (id_isola, id_categoria, quantita) VALUES (?, ?, ?)", [id_isola, 1, 75], (error, result) => {})
                         con.query("INSERT INTO persone (id_isola, id_categoria, quantita) VALUES (?, ?, ?)", [id_isola, 1, 6], (error, result) => {})
                         con.query("INSERT INTO strutture (id_isola, id_categoria, quantita) VALUES (?, ?, ?)", [id_isola, 1, 1], (error, result) => {})
+                        con.query("INSERT INTO strutture (id_isola, id_categoria, quantita) VALUES (?, ?, ?)", [id_isola, 2, 0], (error, result) => {})
                         con.query("INSERT INTO strutture (id_isola, id_categoria, quantita) VALUES (?, ?, ?)", [id_isola, 3, 1], (error, result) => {})
                         con.query("INSERT INTO strutture (id_isola, id_categoria, quantita) VALUES (?, ?, ?)", [id_isola, 4, 1], (error, result) => {})
                     })
