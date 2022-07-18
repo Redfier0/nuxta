@@ -16,20 +16,7 @@
                 <button class="btn btn-outline-success"> compra <%= item.nome %></button>
             </form>
             <% }) %>
-                <% persone.forEach((item)=>{ %>
-                    <form action="/shop" method="post" name="persone">
-                        <input type="hidden" value="<%= item.id %>" name="inputPersone">
-                        <input type="hidden" value="<%= item.nome %>" name="nomePersone">
-                        <button class="btn btn-outline-success"> compra <%= item.nome %></button>
-                    </form>
-                    <% }) %>
-                        <% strutture.forEach((item)=>{ %>
-                            <form action="/shop" method="post" name="strutture">
-                                <input type="hidden" value="<%= item.id %>" name="inputStrutture">
-                                <input type="hidden" value="<%= item.nome %>" name="nomeStrutture">
-                                <button class="btn btn-outline-success"> compra <%= item.nome %></button>
-                            </form>
-                            <% }) %>
+
 </body>
 
 </html>
