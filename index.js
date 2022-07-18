@@ -7,7 +7,10 @@ const bodyParser = require("body-parser")
 const con = require("./connection")
 const accivment = require("./components/accivment")
 const account = require("./components/account")
+const acqua = require("./components/acqua")
 const cibo = require("./components/cibo")
+const persone = require("./components/persone")
+const strutture = require("./components/strutture")
 const eventi = require("./components/eventi")
 const home = require("./components/home")
 const ricompense = require("./components/ricompense")
@@ -37,7 +40,7 @@ app.get('/singup', account.singup)
 
 app.get('/login', account.login)
 
-app.get('/generale', checkLogin, cibo.cibo, dati.risorse)
+app.get('/generale', checkLogin, cibo.cibo, acqua.acqua, persone.persone, strutture.strutture, dati.risorse)
 
 app.get('/logout', account.logout)
 

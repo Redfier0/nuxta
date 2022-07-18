@@ -7,7 +7,7 @@ const cibo = {
         let dati_cibo = {}
         con.query("SELECT * FROM cibo WHERE id_isola = ? ", [id_isola], (error, result) => {
             let cibo = result
-            con.query("SELECT nome FROM categorie_cibo ", [], (error, result) => {
+            con.query("SELECT nome FROM categorie_cibo ", (error, result) => {
                 let nome = result
 
                 function SortArray(x, y) {
