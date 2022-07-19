@@ -16,6 +16,7 @@ const home = require("./components/home")
 const ricompense = require("./components/ricompense")
 const dati = require("./components/dati")
 const shop = require("./components/shop")
+const incremento = require("./components/incremento")
 const cookieParser = require("cookie-parser")
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -40,7 +41,7 @@ app.get('/singup', account.singup)
 
 app.get('/login', account.login)
 
-app.get('/generale', checkLogin, cibo.cibo, acqua.acqua, persone.persone, strutture.strutture, dati.risorse)
+app.get('/generale', checkLogin, incremento.incrementoCibo, cibo.cibo, acqua.acqua, persone.persone, strutture.strutture, dati.risorse)
 
 app.get('/logout', account.logout)
 
