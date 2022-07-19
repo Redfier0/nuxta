@@ -41,7 +41,7 @@ app.get('/singup', account.singup)
 
 app.get('/login', account.login)
 
-app.get('/generale', checkLogin, incremento.incrementoCibo, cibo.cibo, acqua.acqua, persone.persone, strutture.strutture, dati.risorse)
+app.get('/generale', checkLogin, incremento.incrementoCibo, incremento.incrementoAcqua, incremento.incrementoPersone, incremento.incrementoStrutture, cibo.cibo, acqua.acqua, persone.persone, strutture.strutture, dati.risorse)
 
 app.get('/logout', account.logout)
 
