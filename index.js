@@ -17,6 +17,7 @@ const ricompense = require("./components/ricompense")
 const dati = require("./components/dati")
 const shop = require("./components/shop")
 const incremento = require("./components/incremento")
+const token = require("./components/token")
 const cookieParser = require("cookie-parser")
 
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -35,13 +36,20 @@ function checkLogin(req, res, next) {
 
 app.get('/', home.home)
 
-app.get('/shop', checkLogin, shop.shop)
+app.get('/shop', checkLogin, token.tokenShop, shop.shop)
 
 app.get('/singup', account.singup)
 
 app.get('/login', account.login)
 
-app.get('/generale', checkLogin, incremento.incrementoCibo, incremento.incrementoAcqua, incremento.incrementoPersone, incremento.incrementoStrutture, cibo.cibo, acqua.acqua, persone.persone, strutture.strutture, dati.risorse)
+app.get('/generale', checkLogin,
+    incremento.incrementoCibo,
+    token.tokenGenerale,
+    cibo.cibo,
+    acqua.acqua,
+    persone.persone,
+    strutture.strutture,
+    dati.risorse)
 
 app.get('/logout', account.logout)
 

@@ -9,12 +9,22 @@
         <a href="/shop">
             <button>shop</button>
         </a>
+        <h3>
+            token
+            <%= token[0].token %>
+        </h3><br>
         <% dati.filter(item=>{ %>
             <h3>
                 <%= item.nome %>
                     <%= item.quantita %>
             </h3>
             <% }) %>
+
+                <script>
+                    setTimeout(function() {
+                        window.location.reload()
+                    }, 1000);
+                </script>
 
 </body>
 

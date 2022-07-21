@@ -8,7 +8,11 @@
     <%- include("./components/principali.ejs") %>
         <a href="/generale">
             <button>torna all'isola</button>
-        </a><br><br><br>
+        </a><br>
+        <h3>
+            token
+            <%= token[0].token %>
+        </h3><br>
         <% cibo.forEach((item)=>{ %>
             <form action="/shop" method="post" name="cibo">
                 <input type="hidden" value="<%= item.id %>" name="inputCibo">
@@ -30,6 +34,7 @@
                                 <button class="btn btn-outline-success"> compra <%= item.nome %></button>
                             </form>
                             <% }) %>
+
 
 </body>
 
