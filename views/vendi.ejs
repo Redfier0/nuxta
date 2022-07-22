@@ -1,0 +1,40 @@
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <%- include("./components/principali.ejs") %>
+        <div class="isola">
+            <a href="/generale">
+                <button>torna all'isola</button>
+            </a>
+            <a href="/shop">
+                <button>shop</button>
+            </a><br>
+        </div>
+        <h3>
+            token
+            <%= token[0].token %>
+        </h3><br>
+        <% cibo.forEach((item)=>{ %>
+            <form action="/vendi" method="post" name="cibo">
+                <input type="hidden" value="<%= item.id %>" name="inputCibo">
+                <button class="btn btn-outline-success"> vendi <%= item.nome %></button>
+                <% const id = item.id - 1 %>
+                    <h2>quantità
+                        <%= quantita[id].quantita %>
+                    </h2>
+            </form>
+            <% }) %>
+                <% acqua.forEach((item)=>{ %>
+                    <form action="/vendi" method="post" name="acqua">
+                        <input type="hidden" value="<%= item.id %>" name="inputAcqua">
+                        <button class="btn btn-outline-success"> vendi <%= item.nome %></button>
+                    </form>
+                    <% }) %>
+
+</body>
+
+</html>

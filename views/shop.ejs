@@ -6,9 +6,14 @@
 
 <body>
     <%- include("./components/principali.ejs") %>
-        <a href="/generale">
-            <button>torna all'isola</button>
-        </a><br>
+        <div class="isola">
+            <a href="/generale">
+                <button>torna all'isola</button>
+            </a>
+            <a href="/vendi">
+                <button>vendi</button>
+            </a><br>
+        </div>
         <h3>
             token
             <%= token[0].token %>
@@ -16,21 +21,18 @@
         <% cibo.forEach((item)=>{ %>
             <form action="/shop" method="post" name="cibo">
                 <input type="hidden" value="<%= item.id %>" name="inputCibo">
-                <input type="hidden" value="<%= item.nome %>" name="nomeCibo">
                 <button class="btn btn-outline-success"> compra <%= item.nome %></button>
             </form>
             <% }) %>
                 <% persone.forEach((item)=>{ %>
                     <form action="/shop" method="post" name="persone">
                         <input type="hidden" value="<%= item.id %>" name="inputPersone">
-                        <input type="hidden" value="<%= item.nome %>" name="nomePersone">
                         <button class="btn btn-outline-success"> compra <%= item.nome %></button>
                     </form>
                     <% }) %>
                         <% strutture.forEach((item)=>{ %>
                             <form action="/shop" method="post" name="strutture">
                                 <input type="hidden" value="<%= item.id %>" name="inputStrutture">
-                                <input type="hidden" value="<%= item.nome %>" name="nomeStrutture">
                                 <button class="btn btn-outline-success"> compra <%= item.nome %></button>
                             </form>
                             <% }) %>

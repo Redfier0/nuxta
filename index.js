@@ -38,6 +38,8 @@ app.get('/', home.home)
 
 app.get('/shop', checkLogin, token.tokenShop, shop.shop)
 
+app.get('/vendi', checkLogin, token.tokenShop, shop.vendita)
+
 app.get('/singup', account.singup)
 
 app.get('/login', account.login)
@@ -58,6 +60,8 @@ app.post('/', home.pianetaHome)
 app.post('/singup', account.handleSignup)
 
 app.post('/login', account.handleLogin)
+
+app.post('/vendi', shop.handleVendita)
 
 app.post('/shop', shop.handleShop)
 
