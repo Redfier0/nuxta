@@ -22,6 +22,7 @@ const incremento = {
                         }
                         cibo.sort(SortArray)
                         strutture.sort(SortArray)
+                        const quantitaMassimaCasa = strutture[0].quantita * 12
                         const numeroPersone = Math.floor(persone[0].quantita / cibo.length)
                         const fiume = strutture[3].quantita
                         const pozzo = strutture[1].quantita
@@ -189,11 +190,13 @@ const incremento = {
                             con.query("UPDATE cibo SET quantita = ? WHERE id_isola = ? AND id_categoria = ?", [quantitaCiboSette, id_isola, id_categoriaSette], (error, result) => {})
                             con.query("UPDATE cibo SET quantita = ? WHERE id_isola = ? AND id_categoria = ?", [quantitaCiboOtto, id_isola, id_categoriaOtto], (error, result) => {})
                         }
-                        if (persone.length == 1) {
-                            let quantitaPersone = persone[0].quantita
-                            quantitaPersone = quantitaPersone + 1
-                            con.query("UPDATE persone SET quantita = ? WHERE id_isola = ? AND id_categoria = ?", [quantitaPersone, id_isola, 1], (error, result) => {})
-                        }
+                        if (quantitaMassimaCasa > persone[0].quantita) {
+                            if (persone.length == 1) {
+                                let quantitaPersone = persone[0].quantita
+                                quantitaPersone = quantitaPersone + 1
+                                con.query("UPDATE persone SET quantita = ? WHERE id_isola = ? AND id_categoria = ?", [quantitaPersone, id_isola, 1], (error, result) => {})
+                            }
+                        } else {}
                         if (acqua.length == 1) {
                             let quantitaAcqua = acqua[0].quantita
                             quantitaAcqua = quantitaAcqua + aggiungiAcqua

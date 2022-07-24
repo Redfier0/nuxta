@@ -14,21 +14,21 @@
                 <button>vendi</button>
             </a><br>
         </div>
-        <h3>
+        <h2>
             token
             <%= token[0].token %>
-        </h3><br>
+        </h2><br>
         <% dati.filter(item=>{ %>
-            <h3>
+            <h2>
                 <%= item.nome %>
                     <%= item.quantita %>
-            </h3>
+            </h2>
             <% }) %>
 
                 <script>
                     setTimeout(function() {
                         window.location.reload()
-                    }, 10000);
+                    }, 3000);
                 </script>
 
 </body>

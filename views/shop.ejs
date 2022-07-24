@@ -14,26 +14,28 @@
                 <button>vendi</button>
             </a><br>
         </div>
-        <h3>
+        <h2>
             token
             <%= token[0].token %>
-        </h3><br>
+        </h2><br>
         <% cibo.forEach((item)=>{ %>
             <form action="/shop" method="post" name="cibo">
                 <input type="hidden" value="<%= item.id %>" name="inputCibo">
-                <button class="btn btn-outline-success"> compra <%= item.nome %></button>
+                <% const id = item.id - 1 %>
+                    <button class="btn btn-outline-success"> compra <%= item.nome %><h3>quantità <%= quantita[id].quantita %></h3></button>
             </form>
             <% }) %>
                 <% persone.forEach((item)=>{ %>
                     <form action="/shop" method="post" name="persone">
                         <input type="hidden" value="<%= item.id %>" name="inputPersone">
-                        <button class="btn btn-outline-success"> compra <%= item.nome %></button>
+                        <button class="btn btn-outline-success"> compra <%= item.nome %><h3>quantità <%= quantitaPersone[0].quantita %></h3></button>
                     </form>
                     <% }) %>
                         <% strutture.forEach((item)=>{ %>
                             <form action="/shop" method="post" name="strutture">
                                 <input type="hidden" value="<%= item.id %>" name="inputStrutture">
-                                <button class="btn btn-outline-success"> compra <%= item.nome %></button>
+                                <% const id = item.id - 1 %>
+                                    <button class="btn btn-outline-success"> compra <%= item.nome %>  <h3>quantità <%= quantitaStrutture[id].quantita %></h3></button>
                             </form>
                             <% }) %>
 
