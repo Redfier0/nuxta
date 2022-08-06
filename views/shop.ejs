@@ -23,12 +23,18 @@
                 <input type="hidden" value="<%= item.id %>" name="inputCibo">
                 <% const id = item.id - 1 %>
                     <button class="btn btn-outline-success"> compra <%= item.nome %><h3>quantità <%= quantita[id].quantita %></h3></button>
+                    <h4>prezzo
+                        <%= quantita[id].prezzo %>
+                    </h4>
             </form>
             <% }) %>
                 <% persone.forEach((item)=>{ %>
                     <form action="/shop" method="post" name="persone">
                         <input type="hidden" value="<%= item.id %>" name="inputPersone">
                         <button class="btn btn-outline-success"> compra <%= item.nome %><h3>quantità <%= quantitaPersone[0].quantita %></h3></button>
+                        <h4>prezzo
+                            <%= quantitaPersone[0].prezzo %>
+                        </h4>
                     </form>
                     <% }) %>
                         <% strutture.forEach((item)=>{ %>
@@ -36,6 +42,9 @@
                                 <input type="hidden" value="<%= item.id %>" name="inputStrutture">
                                 <% const id = item.id - 1 %>
                                     <button class="btn btn-outline-success"> compra <%= item.nome %>  <h3>quantità <%= quantitaStrutture[id].quantita %></h3></button>
+                                    <h4>prezzo
+                                        <%= quantitaStrutture[id].prezzo %>
+                                    </h4>
                             </form>
                             <% }) %>
 

@@ -1,10 +1,9 @@
 const con = require("../connection")
 const { nextTick } = require("process")
 const { persone } = require("./persone")
-const { acqua } = require("./acqua")
 
 const incremento = {
-    incrementoCibo: (req, res, next) => {
+    incremento: (req, res, next) => {
         let id_isola = req.session.user.id
         con.query("SELECT * FROM cibo WHERE id_isola = ? AND acquistato = ?", [id_isola, 1], async(error, result) => {
             let cibo = result
@@ -23,11 +22,11 @@ const incremento = {
                         cibo.sort(SortArray)
                         strutture.sort(SortArray)
                         const quantitaMassimaCasa = strutture[0].quantita * 12
-                        const numeroPersone = Math.floor(persone[0].quantita / cibo.length)
+                        const numeroPersone = persone[0].quantita / cibo.length
                         const fiume = strutture[3].quantita
                         const pozzo = strutture[1].quantita
-                        const aggiungiAcquaFiume = fiume * 4
-                        const aggiungiAcquaPozzo = pozzo * 3
+                        const aggiungiAcquaFiume = fiume * 4 / 10
+                        const aggiungiAcquaPozzo = pozzo * 3 / 10
                         const aggiungiAcqua = aggiungiAcquaFiume + aggiungiAcquaPozzo
 
                         if (cibo.length == 1) {
@@ -193,8 +192,30 @@ const incremento = {
                         if (quantitaMassimaCasa > persone[0].quantita) {
                             if (persone.length == 1) {
                                 let quantitaPersone = persone[0].quantita
-                                quantitaPersone = quantitaPersone + 1
-                                con.query("UPDATE persone SET quantita = ? WHERE id_isola = ? AND id_categoria = ?", [quantitaPersone, id_isola, 1], (error, result) => {})
+                                if (acqua[0].quantita >= 700) {
+                                    quantitaPersone = quantitaPersone + 1
+                                    con.query("UPDATE persone SET quantita = ? WHERE id_isola = ? AND id_categoria = ?", [quantitaPersone, id_isola, 1], (error, result) => {})
+                                    if (acqua[0].quantita >= 1500) {
+                                        quantitaPersone = quantitaPersone + 1
+                                        con.query("UPDATE persone SET quantita = ? WHERE id_isola = ? AND id_categoria = ?", [quantitaPersone, id_isola, 1], (error, result) => {})
+                                        if (acqua[0].quantita >= 3000) {
+                                            quantitaPersone = quantitaPersone + 1
+                                            con.query("UPDATE persone SET quantita = ? WHERE id_isola = ? AND id_categoria = ?", [quantitaPersone, id_isola, 1], (error, result) => {})
+                                            if (acqua[0].quantita >= 5000) {
+                                                quantitaPersone = quantitaPersone + 1
+                                                con.query("UPDATE persone SET quantita = ? WHERE id_isola = ? AND id_categoria = ?", [quantitaPersone, id_isola, 1], (error, result) => {})
+                                                if (acqua[0].quantita >= 7000) {
+                                                    quantitaPersone = quantitaPersone + 1
+                                                    con.query("UPDATE persone SET quantita = ? WHERE id_isola = ? AND id_categoria = ?", [quantitaPersone, id_isola, 1], (error, result) => {})
+                                                    if (acqua[0].quantita >= 10000) {
+                                                        quantitaPersone = quantitaPersone + 1
+                                                        con.query("UPDATE persone SET quantita = ? WHERE id_isola = ? AND id_categoria = ?", [quantitaPersone, id_isola, 1], (error, result) => {})
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         } else {}
                         if (acqua.length == 1) {

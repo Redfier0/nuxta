@@ -16,8 +16,17 @@
         </div>
         <h2>
             token
-            <%= token[0].token %>
+            <%= token %>
+        </h2>
+        <h2>
+            mana
+            <%= mana %>
         </h2><br>
+        <form action="/generale" name="mana" method="post">
+            <input type="hidden" value="1" name="inputMana">
+            <button class="btn btn-outline-success">Aumenta Mana</button>
+        </form>
+
         <% dati.filter(item=>{ %>
             <h2>
                 <%= item.nome %>
@@ -26,9 +35,9 @@
             <% }) %>
 
                 <script>
-                    setTimeout(function() {
+                    setInterval(function() {
                         window.location.reload()
-                    }, 3000);
+                    }, 500);
                 </script>
 
 </body>

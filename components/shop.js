@@ -41,6 +41,7 @@ const shop = {
             con.query("SELECT * FROM cibo WHERE id_isola = ? AND id_categoria = ?", [id_isola, inputCibo], (error, result) => {
                 let quantita = result[0].quantita
                 let quantitaAcquistato = result[0].quantita_acquistato
+                let ciboPrezzo = result[0].prezzo
                 con.query("SELECT * FROM cibo WHERE id_isola = ?", [id_isola], (error, result) => {
                     const acquistato = result[0].quantita_acquistato + result[1].quantita_acquistato + result[2].quantita_acquistato + result[3].quantita_acquistato + result[4].quantita_acquistato + result[5].quantita_acquistato + result[6].quantita_acquistato + result[7].quantita_acquistato
                     con.query("SELECT * FROM strutture WHERE id_isola = ? AND id_categoria = ?", [id_isola, 3], async(error, result) => {
@@ -48,12 +49,15 @@ const shop = {
                         if (quantitaMassima > acquistato) {
                             quantita = quantita + 20
                             quantitaAcquistato = quantitaAcquistato + 1
-                            await con.query("UPDATE cibo SET quantita = ?, acquistato = ?, quantita_acquistato = ? WHERE id_isola = ? AND id_categoria = ?", [quantita, 1, quantitaAcquistato, id_isola, inputCibo], (error, result) => {})
+                            con.query("UPDATE cibo SET quantita = ?, acquistato = ?, quantita_acquistato = ? WHERE id_isola = ? AND id_categoria = ?", [quantita, 1, quantitaAcquistato, id_isola, inputCibo], (error, result) => {})
                             con.query("SELECT token FROM isole WHERE id = ?", [id_isola], async(error, result) => {
                                 let quantitaToken = result[0].token
-                                if (quantitaToken < 50) {} else {
-                                    quantitaToken = quantitaToken - 50
-                                    await con.query("UPDATE isole SET token = ? WHERE id = ? ", [quantitaToken, id_isola], (error, result) => {})
+                                if (quantitaToken < ciboPrezzo) {} else {
+                                    quantitaToken = quantitaToken - ciboPrezzo
+                                    let percentualePrezzo = (ciboPrezzo / 100) * 5
+                                    ciboPrezzo = ciboPrezzo + percentualePrezzo
+                                    con.query("UPDATE isole SET token = ? WHERE id = ? ", [quantitaToken, id_isola], (error, result) => {})
+                                    con.query("UPDATE cibo SET prezzo = ? WHERE id_isola = ? AND id_categoria = ?", [ciboPrezzo, id_isola, inputCibo], (error, result) => {})
                                 }
                             })
                         } else {}
@@ -62,39 +66,53 @@ const shop = {
             })
         }
         if (inputPersone) {
-            con.query("SELECT quantita FROM persone WHERE id_isola = ? AND id_categoria = ?", [id_isola, inputPersone], (error, result) => {
+            con.query("SELECT * FROM persone WHERE id_isola = ? AND id_categoria = ?", [id_isola, 1], (error, result) => {
                 let quantita = result[0].quantita
                 const acquistato = result[0].quantita_acquistato
+                let personePrezzo = result[0].prezzo
+                console.log(result)
                 con.query("SELECT * FROM strutture WHERE id_isola = ? AND id_categoria = ?", [id_isola, 1], async(error, result) => {
                     const quantitaMassima = result[0].quantita
-                    if (quantitaMassima > acquistato) {
-                        quantita = quantita + 2
-                        let quantitaAcquistato = quantitaAcqua + 1
-                        quantitaAcquistato = quantitaAcquistato + 1
-                        await con.query("UPDATE persone SET quantita = ?, quantita_acquistato = ? WHERE id_isola = ? AND id_categoria = ?", [quantita, quantitaAcquistato, id_isola, inputPersone], (error, result) => {})
-                        con.query("SELECT token FROM isole WHERE id = ?", [id_isola], async(error, result) => {
-                            let quantitaToken = result[0].token
-                            if (quantitaToken < 50) {} else {
-                                quantitaToken = quantitaToken - 50
-                                await con.query("UPDATE isole SET token = ? WHERE id = ? ", [quantitaToken, id_isola], (error, result) => {})
-                            }
-                        })
-                    } else {}
+                    con.query("SELECT * FROM acqua WHERE id_isola= ? AND id_categoria = ?", [id_isola, 1], (error, result) => {
+                        let quantitaAcqua = result[0].quantita
+                        if (quantitaMassima > acquistato) {
+                            quantita = quantita + 2
+                            let quantitaAcquistato = quantitaAcqua + 1
+                            quantitaAcquistato = quantitaAcquistato + 1
+                            con.query("UPDATE persone SET quantita = ?, quantita_acquistato = ? WHERE id_isola = ? AND id_categoria = ?", [quantita, quantitaAcquistato, id_isola, 1], (error, result) => {})
+                            con.query("SELECT token FROM isole WHERE id = ?", [id_isola], async(error, result) => {
+                                let quantitaToken = result[0].token
+                                if (quantitaToken < personePrezzo) {} else {
+                                    quantitaToken = quantitaToken - personePrezzo
+                                    let percentualePrezzo = (personePrezzo / 100) * 5
+                                    personePrezzo = personePrezzo + percentualePrezzo
+                                    con.query("UPDATE isole SET token = ? WHERE id = ? ", [quantitaToken, id_isola], (error, result) => {})
+                                    con.query("UPDATE persone SET prezzo = ? WHERE id_isola = ? AND id_categoria = ?", [personePrezzo, id_isola, 1], (error, result) => {})
+                                }
+                            })
+                        } else {}
+                    })
                 })
             })
         }
         if (inputStrutture) {
-            con.query("SELECT quantita FROM strutture WHERE id_isola = ? AND id_categoria = ?", [id_isola, inputStrutture], async(error, result) => {
+            con.query("SELECT * FROM strutture WHERE id_isola = ? AND id_categoria = ?", [id_isola, inputStrutture], async(error, result) => {
+                let strutturePrezzo = result[0].prezzo
                 let quantita = result[0].quantita
-                quantita = quantita + 1
-                await con.query("UPDATE strutture SET quantita = ? WHERE id_isola = ? AND id_categoria = ?", [quantita, id_isola, inputStrutture], (error, result) => {})
-                con.query("SELECT token FROM isole WHERE id = ?", [id_isola], async(error, result) => {
-                    let quantitaToken = result[0].token
-                    if (quantitaToken < 50) {} else {
-                        quantitaToken = quantitaToken - 50
-                        await con.query("UPDATE isole SET token = ? WHERE id = ? ", [quantitaToken, id_isola], (error, result) => {})
-                    }
-                })
+                if (quantita < 15) {
+                    quantita = quantita + 1
+                    con.query("UPDATE strutture SET quantita = ? WHERE id_isola = ? AND id_categoria = ?", [quantita, id_isola, inputStrutture], (error, result) => {})
+                    con.query("SELECT token FROM isole WHERE id = ?", [id_isola], async(error, result) => {
+                        let quantitaToken = result[0].token
+                        if (quantitaToken < strutturePrezzo) {} else {
+                            quantitaToken = quantitaToken - strutturePrezzo
+                            let percentualePrezzo = (strutturePrezzo / 100) * 5
+                            strutturePrezzo = strutturePrezzo + percentualePrezzo
+                            con.query("UPDATE isole SET token = ? WHERE id = ? ", [quantitaToken, id_isola], (error, result) => {})
+                            con.query("UPDATE strutture SET prezzo = ? WHERE id_isola = ? AND id_categoria = ?", [strutturePrezzo, id_isola, inputStrutture], (error, result) => {})
+                        }
+                    })
+                } else {}
             })
         }
         return res.redirect("/shop")
@@ -140,9 +158,9 @@ const shop = {
                     let quantitaToken = result[0].token
                     if (quantita < 100) {} else {
                         quantita = quantita - 100
-                        await con.query("UPDATE cibo SET quantita = ?, acquistato = ?, quantita_acquistato = ? WHERE id_isola = ? AND id_categoria = ?", [quantita, 1, id_isola, inputCibo], (error, result) => {})
+                        con.query("UPDATE cibo SET quantita = ? WHERE id_isola = ? AND id_categoria = ?", [quantita, id_isola, inputCibo], (error, result) => {})
                         quantitaToken = quantitaToken + 1
-                        await con.query("UPDATE isole SET token = ? WHERE id = ? ", [quantitaToken, id_isola], (error, result) => {})
+                        con.query("UPDATE isole SET token = ? WHERE id = ? ", [quantitaToken, id_isola], (error, result) => {})
                     }
                 })
             })
@@ -154,9 +172,9 @@ const shop = {
                     let quantitaToken = result[0].token
                     if (quantita < 100) {} else {
                         quantita = quantita - 100
-                        await con.query("UPDATE acqua SET quantita = ? WHERE id_isola = ? AND id_categoria = ?", [quantita, id_isola, 1], (error, result) => {})
+                        con.query("UPDATE acqua SET quantita = ? WHERE id_isola = ? AND id_categoria = ?", [quantita, id_isola, 1], (error, result) => {})
                         quantitaToken = quantitaToken + 1
-                        await con.query("UPDATE isole SET token = ? WHERE id = ? ", [quantitaToken, id_isola], (error, result) => {})
+                        con.query("UPDATE isole SET token = ? WHERE id = ? ", [quantitaToken, id_isola], (error, result) => {})
                     }
                 })
             })

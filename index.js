@@ -1,6 +1,7 @@
 const express = require("express")
 const session = require("express-session")
 const { urlencoded } = require("express")
+const cookieParser = require("cookie-parser")
 const app = express()
 const port = 3000
 const bodyParser = require("body-parser")
@@ -18,7 +19,7 @@ const dati = require("./components/dati")
 const shop = require("./components/shop")
 const incremento = require("./components/incremento")
 const token = require("./components/token")
-const cookieParser = require("cookie-parser")
+const aumentoManuale = require("./components/aumentoManuale")
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.set("view engine", "ejs")
@@ -33,7 +34,6 @@ function checkLogin(req, res, next) {
     }
 }
 
-
 app.get('/', home.home)
 
 app.get('/shop', checkLogin, token.tokenShop, shop.shop)
@@ -44,8 +44,9 @@ app.get('/singup', account.singup)
 
 app.get('/login', account.login)
 
-app.get('/generale', checkLogin,
-    incremento.incrementoCibo,
+app.get('/generale',
+    checkLogin,
+    incremento.incremento,
     token.tokenGenerale,
     cibo.cibo,
     acqua.acqua,
@@ -64,5 +65,7 @@ app.post('/login', account.handleLogin)
 app.post('/vendi', shop.handleVendita)
 
 app.post('/shop', shop.handleShop)
+
+app.post('/generale', aumentoManuale.aumentoCibo)
 
 app.listen(port, () => {})
