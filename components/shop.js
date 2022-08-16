@@ -16,6 +16,7 @@ const shop = {
                             const quantitaPersone = result
                             con.query("SELECT * FROM strutture WHERE id_isola = ?", [id_isola], (error, result) => {
                                 const quantitaStrutture = result
+                                let quantitaAcquistato = quantita[0].quantita_acquistato + quantita[1].quantita_acquistato + quantita[2].quantita_acquistato + quantita[3].quantita_acquistato + quantita[4].quantita_acquistato + quantita[5].quantita_acquistato + quantita[6].quantita_acquistato + quantita[7].quantita_acquistato
 
                                 function SortArray(x, y) {
                                     if (x.id_categoria < y.id_categoria) { return -1; }
@@ -25,7 +26,7 @@ const shop = {
                                 quantita.sort(SortArray)
                                 quantitaStrutture.sort(SortArray)
                                 const token = req.token
-                                res.render("shop", { cibo, persone, strutture, token, quantita, quantitaPersone, quantitaStrutture })
+                                res.render("shop", { cibo, persone, strutture, token, quantita, quantitaPersone, quantitaStrutture, quantitaAcquistato })
                             })
                         })
                     })
@@ -54,7 +55,7 @@ const shop = {
                                 let quantitaToken = result[0].token
                                 if (quantitaToken < ciboPrezzo) {} else {
                                     quantitaToken = quantitaToken - ciboPrezzo
-                                    let percentualePrezzo = (ciboPrezzo / 100) * 5
+                                    let percentualePrezzo = (ciboPrezzo / 100) * 20
                                     ciboPrezzo = ciboPrezzo + percentualePrezzo
                                     con.query("UPDATE isole SET token = ? WHERE id = ? ", [quantitaToken, id_isola], (error, result) => {})
                                     con.query("UPDATE cibo SET prezzo = ? WHERE id_isola = ? AND id_categoria = ?", [ciboPrezzo, id_isola, inputCibo], (error, result) => {})
@@ -65,54 +66,24 @@ const shop = {
                 })
             })
         }
-        if (inputPersone) {
-            con.query("SELECT * FROM persone WHERE id_isola = ? AND id_categoria = ?", [id_isola, 1], (error, result) => {
-                let quantita = result[0].quantita
-                const acquistato = result[0].quantita_acquistato
-                let personePrezzo = result[0].prezzo
-                console.log(result)
-                con.query("SELECT * FROM strutture WHERE id_isola = ? AND id_categoria = ?", [id_isola, 1], async(error, result) => {
-                    const quantitaMassima = result[0].quantita
-                    con.query("SELECT * FROM acqua WHERE id_isola= ? AND id_categoria = ?", [id_isola, 1], (error, result) => {
-                        let quantitaAcqua = result[0].quantita
-                        if (quantitaMassima > acquistato) {
-                            quantita = quantita + 2
-                            let quantitaAcquistato = quantitaAcqua + 1
-                            quantitaAcquistato = quantitaAcquistato + 1
-                            con.query("UPDATE persone SET quantita = ?, quantita_acquistato = ? WHERE id_isola = ? AND id_categoria = ?", [quantita, quantitaAcquistato, id_isola, 1], (error, result) => {})
-                            con.query("SELECT token FROM isole WHERE id = ?", [id_isola], async(error, result) => {
-                                let quantitaToken = result[0].token
-                                if (quantitaToken < personePrezzo) {} else {
-                                    quantitaToken = quantitaToken - personePrezzo
-                                    let percentualePrezzo = (personePrezzo / 100) * 5
-                                    personePrezzo = personePrezzo + percentualePrezzo
-                                    con.query("UPDATE isole SET token = ? WHERE id = ? ", [quantitaToken, id_isola], (error, result) => {})
-                                    con.query("UPDATE persone SET prezzo = ? WHERE id_isola = ? AND id_categoria = ?", [personePrezzo, id_isola, 1], (error, result) => {})
-                                }
-                            })
-                        } else {}
-                    })
-                })
-            })
-        }
+
         if (inputStrutture) {
             con.query("SELECT * FROM strutture WHERE id_isola = ? AND id_categoria = ?", [id_isola, inputStrutture], async(error, result) => {
                 let strutturePrezzo = result[0].prezzo
                 let quantita = result[0].quantita
-                if (quantita < 15) {
-                    quantita = quantita + 1
-                    con.query("UPDATE strutture SET quantita = ? WHERE id_isola = ? AND id_categoria = ?", [quantita, id_isola, inputStrutture], (error, result) => {})
-                    con.query("SELECT token FROM isole WHERE id = ?", [id_isola], async(error, result) => {
-                        let quantitaToken = result[0].token
-                        if (quantitaToken < strutturePrezzo) {} else {
-                            quantitaToken = quantitaToken - strutturePrezzo
-                            let percentualePrezzo = (strutturePrezzo / 100) * 5
-                            strutturePrezzo = strutturePrezzo + percentualePrezzo
-                            con.query("UPDATE isole SET token = ? WHERE id = ? ", [quantitaToken, id_isola], (error, result) => {})
-                            con.query("UPDATE strutture SET prezzo = ? WHERE id_isola = ? AND id_categoria = ?", [strutturePrezzo, id_isola, inputStrutture], (error, result) => {})
-                        }
-                    })
-                } else {}
+                con.query("SELECT token FROM isole WHERE id = ?", [id_isola], async(error, result) => {
+                    let quantitaToken = result[0].token
+                    if (quantitaToken < strutturePrezzo) {} else {
+                        quantita = quantita + 1
+                        con.query("UPDATE strutture SET quantita = ? WHERE id_isola = ? AND id_categoria = ?", [quantita, id_isola, inputStrutture], (error, result) => {})
+
+                        quantitaToken = quantitaToken - strutturePrezzo
+                        let percentualePrezzo = (strutturePrezzo / 100) * 20
+                        strutturePrezzo = strutturePrezzo + percentualePrezzo
+                        con.query("UPDATE isole SET token = ? WHERE id = ? ", [quantitaToken, id_isola], (error, result) => {})
+                        con.query("UPDATE strutture SET prezzo = ? WHERE id_isola = ? AND id_categoria = ?", [strutturePrezzo, id_isola, inputStrutture], (error, result) => {})
+                    }
+                })
             })
         }
         return res.redirect("/shop")

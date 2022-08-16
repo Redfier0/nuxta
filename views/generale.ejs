@@ -1,45 +1,221 @@
-<html>
+<html lang="en">
+<% if(tutorial == 0){ %>
 
-<head>
+    <%- include('./tutorialPrimo.ejs') %>
 
-</head>
+        <% }else{ %>
 
-<body>
-    <%- include("./components/principali.ejs") %>
-        <div class="isole">
-            <a href="/shop">
-                <button>shop</button>
-            </a>
-            <a href="/vendi">
-                <button>vendi</button>
-            </a><br>
-        </div>
-        <h2>
-            token
-            <%= token %>
-        </h2>
-        <h2>
-            mana
-            <%= mana %>
-        </h2><br>
-        <form action="/generale" name="mana" method="post">
-            <input type="hidden" value="1" name="inputMana">
-            <button class="btn btn-outline-success">Aumenta Mana</button>
-        </form>
-
-        <% dati.filter(item=>{ %>
-            <h2>
-                <%= item.nome %>
-                    <%= item.quantita %>
-            </h2>
-            <% }) %>
-
-                <script>
-                    setInterval(function() {
-                        window.location.reload()
-                    }, 500);
+            <head>
+                <meta charset="utf-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <link href="/css/style.css" rel="stylesheet" type="text/css">
+                <title>
+                    <%= lingue[0].nuxta %>
+                </title>
+                <script src="https://code.jquery.com/jquery-3.3.1.min.js">
                 </script>
+                <%- include('./lingue.ejs') %>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                    <script>
+                        setTimeout(() => {
+                            $(document).ready(function() {
+                                $("body").load(window.location.href)
+                            })
+                        }, 500)
+                    </script>
+            </head>
 
-</body>
+            <body>
+                <!-- Start Top Bar -->
+                <div class="top-bar">
+                    <div class="top-bar-left">
+                        <ul class="menu">
+                            <a href="/">
+                                <div class="color-menu">
+                                    <li class="menu-text">
+                                        <%= lingue[0].nuxta %>
+                                    </li>
+                                </div>
+                            </a>
+                        </ul>
+                    </div>
+                    <div class="top-bar-right">
+                        <ul class="menu">
+                            <li>
+                                <a href="/logout">
+                                    <%= lingue[0].logout %>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Top Bar -->
+                <div class="top-bar2">
+                    <ul class="vertical medium-horizontal menu expanded text-center">
+                        <li>
+                            <a href="/shop">
+                                <div class="color-menu">
+                                    <div class="stat">
+                                        <%= lingue[0].shop %>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/vendi">
+                                <div class="color-menu">
+                                    <div class="stat">
+                                        <%= lingue[0].sell %>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <div class="stat">
+                                <%= lingue[0].coin %>
+                            </div><span><%= token %> </span>
+                        </li>
+                        <li>
+                            <div class="stat">
+                                <%= lingue[0].mana %>
+                            </div><span><%= mana %> </span>
+                        </li>
+                    </ul>
+
+                    <ul class="vertical medium-horizontal menu expanded text-center">
+                        <li>
+                            <div class="stat">
+                                <%= dati[0].nome %>
+                            </div><span><%= dati[0].quantita %> </span>
+                        </li>
+                        <% if(dati[1].quantita > 1){ %>
+                            <li>
+                                <div class="stat">
+                                    <%= dati[1].nome %>
+                                </div><span><%= dati[1].quantita %> </span>
+                            </li>
+                            <% }else{} %>
+
+                                <% if(dati[2].quantita > 1){ %>
+                                    <li>
+                                        <div class="stat">
+                                            <%= dati[2].nome %>
+                                        </div><span><%= dati[2].quantita %> </span>
+                                    </li>
+                                    <% }else{} %>
+
+                                        <% if(dati[3].quantita > 1){ %>
+                                            <li>
+                                                <div class="stat">
+                                                    <%= dati[3].nome %>
+                                                </div><span><%= dati[3].quantita %> </span>
+                                            </li>
+                                            <% }else{} %>
+
+                                                <% if(dati[4].quantita > 1){ %>
+                                                    <li>
+                                                        <div class="stat">
+                                                            <%= dati[4].nome %>
+                                                        </div><span><%= dati[4].quantita %> </span>
+                                                    </li>
+                                                    <% }else{} %>
+
+                                                        <% if(dati[5].quantita > 1){ %>
+                                                            <li>
+                                                                <div class="stat">
+                                                                    <%= dati[5].nome %>
+                                                                </div><span><%= dati[5].quantita %> </span>
+                                                            </li>
+                                                            <% }else{} %>
+
+                                                                <% if(dati[6].quantita > 1){ %>
+                                                                    <li>
+                                                                        <div class="stat">
+                                                                            <%= dati[6].nome %>
+                                                                        </div><span><%= dati[6].quantita %> </span>
+                                                                    </li>
+                                                                    <% }else{} %>
+
+                                                                        <% if(dati[7].quantita > 1){ %>
+                                                                            <li>
+                                                                                <div class="stat">
+                                                                                    <%= dati[7].nome %>
+                                                                                </div><span><%= dati[7].quantita %> </span>
+                                                                            </li>
+                                                                            <% }else{} %>
+
+                                                                                <li>
+                                                                                    <div class="stat">
+                                                                                        <%= dati[8].nome %>
+                                                                                    </div><span><%= dati[8].quantita %> </span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <div class="stat">
+                                                                                        <%= dati[9].nome %>
+                                                                                    </div><span><%= dati[9].quantita %> </span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <div class="stat">
+                                                                                        <%= dati[10].nome %>
+                                                                                    </div><span><%= dati[10].quantita %> </span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <div class="stat">
+                                                                                        <%= dati[11].nome %>
+                                                                                    </div><span><%= dati[11].quantita %> </span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <div class="stat">
+                                                                                        <%= dati[12].nome %>
+                                                                                    </div><span><%= dati[12].quantita %> </span>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <div class="stat">
+                                                                                        <%= dati[13].nome %>
+                                                                                    </div><span><%= dati[13].quantita %> </span>
+                                                                                </li>
+                    </ul>
+                </div>
+                <button id="but" onclick="aggiungiMana()" style="height: 100%; width: 100%;">.</button>
+                <div class="row column">
+                    <ul class="menu">
+                        <li>
+                            <a href="#">
+                                <%= lingue[0].discord %>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <%= lingue[0].twitter %>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <%= lingue[0].instagram %>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <%= lingue[0].reddit %>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </body>
+            <script>
+                function aggiungiMana() {
+                    $.ajax({
+                        url: 'http://localhost:3000/generale',
+                        type: 'post',
+                        data: {
+                            inputMana: '1'
+                        }
+                    }).done(response => {})
+                }
+            </script>
+            <% } %>
 
 </html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<% if(livelloTutorial[1].finito == 1){ %>
+
+    <%- include('./tutorialQuarto.ejs') %>
+
+        <% }else{ %>
+
+            <head>
+                <meta charset="utf-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+                <link href="/css/style.css" rel="stylesheet" type="text/css">
+                <title>
+                    <%= lingue[0].nuxta %>
+                </title>
+                <%- include('./lingue.ejs') %>
+            </head>
+
+            <body>
+                <!-- Start Top Bar -->
+                <div class="top-bar">
+                    <div class="top-bar-left">
+                        <ul class="menu">
+                            <div class="color-menu">
+                                <li class="menu-text">
+                                    <%= lingue[0].nuxta %>
+                                </li>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class="top-bar-right">
+                        <ul class="menu">
+                            <li>
+                                <a href="">
+                                    <%= lingue[0].logout %>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Top Bar -->
+                <div class="top-bar2">
+                    <ul class="vertical medium-horizontal menu expanded text-center">
+                        <li>
+                            <a href="#shop">
+                                <div class="color-menu">
+                                    <div class="stat">
+                                        <%= lingue[0].shop %>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <form action="/generale" method="post">
+                                <input type="hidden" value="3" name="tutorial">
+                                <button>
+                            <div class="stat">
+                                <%= lingue[0].sell %>
+                            </div>
+                            </button>
+                            </form>
+                        </li>
+
+                        <li>
+                            <div class="stat">
+                                <%= lingue[0].coin %>
+                            </div><span>149 </span>
+                        </li>
+                        <li>
+                            <div class="stat">
+                                <%= lingue[0].mana %>
+                            </div><span>100 </span>
+                        </li>
+                    </ul>
+
+                    <ul class="vertical medium-horizontal menu expanded text-center">
+                        <li>
+                            <div class="stat">
+                                wheat
+                            </div><span>50 </span>
+                        </li>
+                        <li>
+                            <div class="stat">
+                                water
+                            </div><span>175 </span>
+                        </li>
+                        <li>
+                            <div class="stat">
+                                people
+                            </div><span>6 </span>
+                        </li>
+                        <li>
+                            <div class="stat">
+                                home
+                            </div><span>1 </span>
+                        </li>
+                        <li>
+                            <div class="stat">
+                                water well
+                            </div><span>0 </span>
+                        </li>
+                        <li>
+                            <div class="stat">
+                                field
+                            </div><span>0 </span>
+                        </li>
+                        <li>
+                            <div class="stat">
+                                river
+                            </div><span>1 </span>
+                        </li>
+                    </ul>
+                </div>
+                <button style="height: 100%; width: 100%;">.</button>
+
+                <div class="row column">
+                    <ul class="menu">
+                        <li>
+                            <a href="#">
+                                <%= lingue[0].discord %>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <%= lingue[0].twitter %>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <%= lingue[0].instagram %>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <%= lingue[0].reddit %>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </body>
+            <% } %>
+
+</html>

@@ -1,17 +1,146 @@
-<html>
+<html lang="en">
 
 <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <%- include('./lingue.ejs') %>
+        <title>
+            <%= lingue[0].nuxta %>
+        </title>
 </head>
 
 <body>
-    <%- include("./components/principali.ejs") %>
-        <h1>home</h1>
-        <form action="/" method="post">
-            <button name="isole">vai all'isola</button>
-        </form>
-        <h1>Cos'è Nuxta</h1>
-        <h3>nuxta è idle game dove lo scopo è guadagnare più<br> token possibili ci sono 4 categorie da tenere <br> sott'occhio, il cibo, l'acqua, le persone e le <br> strutture ogni categoria è fondamentale per le altre <br> ad esempio per aumentare più
-            velocemente le<br> persone il modo migliore è aumentare l'acqua <br>ora tocca a te trovare i modi migliori<br> per guadagnare più velocemente <br>Buona Fortuna!!!</h3>
+
+    <!-- Start Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <ul class="menu">
+
+                <a href="/">
+                    <div class="color-menu">
+                        <li class="menu-text">
+                            <%= lingue[0].nuxta %>
+                        </li>
+                    </div>
+                </a>
+                <% if(loggato == true){ %>
+                    <li><a href="/generale">Vai All'Isola</a></li>
+                    <% } %>
+            </ul>
+        </div>
+        <div class="top-bar-right">
+            <ul class="menu">
+                <% if(loggato == true){ %>
+                    <li>
+                        <a href="/logout">
+                            <%= lingue[0].logout %>
+                        </a>
+                    </li>
+                    <% }else{ %>
+                        <li>
+                            <a href="/login">
+                                <%= lingue[0].login %>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/singup">
+                                <%= lingue[0].signup %>
+                            </a>
+                        </li>
+                        <% } %>
+            </ul>
+        </div>
+    </div>
+    <!-- End Top Bar -->
+    <div class="callout large">
+        <div class="row column text-center">
+            <h1>Entra In Un Nuovo Mondo</h1>
+            <p class="lead">Costruisci Le Fondamenta Di Un Nuovo Mondo Da Zero</p>
+            <a href="/generale" class="button large">Vai All'Isola</a>
+            <a href="#about" class="button large hollow">Scori Dì Più</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="medium-6 columns medium-push-6">
+            <img class="thumbnail" src="https://p4.wallpaperbetter.com/wallpaper/53/889/264/pixel-art-stars-clouds-moon-wallpaper-preview.jpg">
+        </div>
+        <div class="medium-6 columns medium-pull-6">
+            <h2>Cos'è Nuxta</h2>
+            <p>...</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="medium-4 columns">
+            <h3>Grafica</h3>
+            <p>...</p>
+        </div>
+        <div class="medium-4 columns">
+            <h3>Funzionamento</h3>
+            <p>...</p>
+        </div>
+        <div class="medium-4 columns">
+            <h3>Particolarità</h3>
+            <p>...</p>
+        </div>
+    </div>
+
+
+    <div class="row column">
+        <ul class="vertical medium-horizontal menu expanded text-center">
+            <li>
+                <div class="stat">Play To Earn</div>
+            </li>
+            <li>
+                <div class="stat">Token</div>
+            </li>
+            <li>
+                <div class="stat">Innovativo</div>
+            </li>
+            <li>
+                <div class="stat">Web 3</div>
+            </li>
+            <li>
+                <div class="stat">Block Chain</div>
+            </li>
+        </ul>
+    </div>
+    <hr>
+
+    <div class="row column">
+        <h3>Da Dove Nasce L'Idea</h3>
+        <p>l'idea nasce dal piccolo principe perchè...</p>
+    </div>
+
+
+    <hr>
+
+    <div class="row column">
+        <ul class="menu">
+            <li>
+                <a href="#">
+                    <%= lingue[0].discord %>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <%= lingue[0].twitter %>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <%= lingue[0].instagram %>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <%= lingue[0].reddit %>
+                </a>
+            </li>
+        </ul>
+    </div>
 </body>
 
 </html>

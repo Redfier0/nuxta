@@ -1,70 +1,67 @@
-<html>
+<html lang="en">
 
 <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <%- include('./lingue.ejs') %>
+        <title>
+            <%= lingue[0].nuxta %>
+        </title>
 </head>
 
 <body>
-    <h1>sing up</h1>
-    <form action="/singup" method="post">
-        wallet <input type="text" name="wallet"><br> <br>colore
-        <div class="color-picker"></div>
-        <br> nome<br> <input type="text" name="nome"><br> password<br> <input type="password" name="password"> <br><br>
-        <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
-        <script>
-            const pickr = Pickr.create({
-                el: '.color-picker',
-                theme: 'classic', // or 'monolith', or 'nano'
+    <!-- Start Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <ul class="menu">
+                <a href="/">
+                    <div class="color-menu">
+                        <li class="menu-text">
+                            <%= lingue[0].nuxta %>
+                        </li>
+                    </div>
+                </a>
+            </ul>
+        </div>
+    </div>
+    <!-- End Top Bar -->
+    <ul class="text-center">
+        <div class="login-box">
+            <h2>
+                <%= lingue[0].signup %>
+            </h2>
+            <form action="/singup" method="post">
+                <div class="user-box">
+                    <input type="text" name="wallet">
+                    <label><%= lingue[0].username %></label>
+                </div>
+                <div class="user-box">
+                    <input type="password" name="password">
+                    <label><%= lingue[0].password %></label>
+                </div>
+                <div class="user-box">
+                    <input type="text" name="nome">
+                    <label><%= lingue[0].name_island%></label>
+                </div>
+                <button><%= lingue[0].signup %></button>
+            </form>
+            <div class="button-signup">
+                <form action="/login">
+                    <button><%= lingue[0].login %></button>
+                </form>
+            </div>
+        </div>
+    </ul>
 
-                swatches: [
-                    'rgba(244, 67, 54, 1)',
-                    'rgba(233, 30, 99, 0.95)',
-                    'rgba(156, 39, 176, 0.9)',
-                    'rgba(103, 58, 183, 0.85)',
-                    'rgba(63, 81, 181, 0.8)',
-                    'rgba(33, 150, 243, 0.75)',
-                    'rgba(3, 169, 244, 0.7)',
-                    'rgba(0, 188, 212, 0.7)',
-                    'rgba(0, 150, 136, 0.75)',
-                    'rgba(76, 175, 80, 0.8)',
-                    'rgba(139, 195, 74, 0.85)',
-                    'rgba(205, 220, 57, 0.9)',
-                    'rgba(255, 235, 59, 0.95)',
-                    'rgba(255, 193, 7, 1)'
-                ],
-
-                components: {
-
-                    // Main components
-                    preview: true,
-                    opacity: true,
-                    hue: true,
-
-                    // Input / output Options
-                    interaction: {
-                        hex: true,
-                        rgba: false,
-                        hsla: false,
-                        hsva: false,
-                        cmyk: false,
-                        input: true,
-                        clear: true,
-                        save: true
-                    }
-                }
-
-            });
-
-            pickr.on('save', (color) => {
-                const colore = color.toHEXA().toString()
-                Cookies.set('colore', colore)
-            })
-        </script>
-
-        <button class="btn btn-outline-success">Sing Up</button>
-    </form>
-    <a href="/login">login</a>
 </body>
+<style type="text/css">
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        background: linear-gradient(#141e30, #243b55);
+    }
+</style>
 
 </html>

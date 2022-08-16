@@ -1,17 +1,62 @@
-<html>
+<html lang="en">
 
 <head>
-
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <%- include('./lingue.ejs') %>
+        <title>
+            <%= lingue[0].nuxta %>
+        </title>
 </head>
 
 <body>
-
-    <h1>log in</h1>
-    <form action="/login" method="post">
-        wallet <input type="text" name="wallet"> password <input type="password" name="password">
-        <button class="btn btn-outline-success">login</button>
-    </form>
-    <a href="/singup">singup</a>
+    <!-- Start Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <ul class="menu">
+                <a href="/">
+                    <div class="color-menu">
+                        <li class="menu-text">
+                            <%= lingue[0].nuxta %>
+                        </li>
+                    </div>
+                </a>
+            </ul>
+        </div>
+    </div>
+    <!-- End Top Bar -->
+    <ul class="text-center">
+        <div class="login-box">
+            <h2>
+                <%= lingue[0].login %>
+            </h2>
+            <form action="/login" method="post">
+                <div class="user-box">
+                    <input type="text" name="wallet">
+                    <label><%= lingue[0].username %></label>
+                </div>
+                <div class="user-box">
+                    <input type="password" name="password">
+                    <label><%= lingue[0].password %></label>
+                </div>
+                <button><%= lingue[0].login %></button>
+            </form>
+            <div class="button-signup">
+                <form action="/singup">
+                    <button><%= lingue[0].signup %></button>
+                </form>
+            </div>
+        </div>
+    </ul>
 </body>
+<style type="text/css">
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: sans-serif;
+        background: linear-gradient(#141e30, #243b55);
+    }
+</style>
 
 </html>

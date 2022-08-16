@@ -1,14 +1,11 @@
 {
     "name": "nuxta",
     "version": "1.0.0",
-    "description": "",
     "main": "index.js",
+    "devDependencies": {},
     "scripts": {
         "start": "nodemon index.js"
     },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
     "dependencies": {
         "bcrypt": "^5.0.1",
         "cookie-parser": "^1.4.6",
@@ -18,5 +15,9 @@
         "gitignore": "^0.7.0",
         "mysql": "^2.18.1",
         "nodemon": "^2.0.19"
-    }
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "description": ""
 }

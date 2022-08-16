@@ -1,54 +1,177 @@
-<html>
+<html lang="en">
 
 <head>
-
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <%- include('./lingue.ejs') %>
+        <title>
+            <%= lingue[0].nuxta %>
+        </title>
 </head>
 
 <body>
-    <%- include("./components/principali.ejs") %>
-        <div class="isola">
-            <a href="/generale">
-                <button>torna all'isola</button>
-            </a>
-            <a href="/vendi">
-                <button>vendi</button>
-            </a><br>
+    <!-- Start Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <ul class="menu">
+                <a href="/">
+                    <div class="color-menu">
+                        <li class="menu-text">
+                            <%= lingue[0].nuxta %>
+                        </li>
+                    </div>
+                </a>
+            </ul>
         </div>
-        <h2>
-            token
-            <%= token[0].token %>
-        </h2><br>
-        <% cibo.forEach((item)=>{ %>
-            <form action="/shop" method="post" name="cibo">
-                <input type="hidden" value="<%= item.id %>" name="inputCibo">
-                <% const id = item.id - 1 %>
-                    <button class="btn btn-outline-success"> compra <%= item.nome %><h3>quantità <%= quantita[id].quantita %></h3></button>
-                    <h4>prezzo
-                        <%= quantita[id].prezzo %>
-                    </h4>
-            </form>
-            <% }) %>
-                <% persone.forEach((item)=>{ %>
-                    <form action="/shop" method="post" name="persone">
-                        <input type="hidden" value="<%= item.id %>" name="inputPersone">
-                        <button class="btn btn-outline-success"> compra <%= item.nome %><h3>quantità <%= quantitaPersone[0].quantita %></h3></button>
-                        <h4>prezzo
-                            <%= quantitaPersone[0].prezzo %>
-                        </h4>
-                    </form>
-                    <% }) %>
-                        <% strutture.forEach((item)=>{ %>
-                            <form action="/shop" method="post" name="strutture">
-                                <input type="hidden" value="<%= item.id %>" name="inputStrutture">
-                                <% const id = item.id - 1 %>
-                                    <button class="btn btn-outline-success"> compra <%= item.nome %>  <h3>quantità <%= quantitaStrutture[id].quantita %></h3></button>
-                                    <h4>prezzo
-                                        <%= quantitaStrutture[id].prezzo %>
+        <div class="top-bar-right">
+            <ul class="menu">
+                <li>
+                    <a href="/logout">
+                        <%= lingue[0].logout %>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- End Top Bar -->
+
+    <div class="top-bar2">
+        <ul class="vertical medium-horizontal menu expanded text-center">
+
+            <li>
+                <a href="/generale">
+                    <div class="color-menu">
+                        <div class="stat">
+                            <%= lingue[0].island %>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="/vendi">
+                    <div class="color-menu">
+                        <div class="stat">
+                            <%= lingue[0].sell %>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <div class="stat">
+                    <%= lingue[0].coin %>
+                </div><span><%= token[0].token %> </span>
+            </li>
+            <li>
+        </ul>
+
+    </div>
+    <div class="row">
+        <ul class=" medium-horizontal menu expanded ">
+            <div class="posiziona-in-alto">
+                <li>
+                    <% strutture.forEach((item)=>{ %>
+                        <% const id = item.id - 1 %>
+                            <% if(quantitaStrutture[id].prezzo <= token[0].token){ %>
+                                <form action="/shop" method="post" name="strutture">
+                                    <input type="hidden" value="<%= item.id %>" name="inputStrutture">
+                                    <div class="contorno">
+                                        <button> <h3><%= lingue[0].buy %> <%= item.nome %> </h3> </button></div>
+                                    <h4>
+                                        <%= lingue[0].quantity %>
+                                            <%= quantitaStrutture[id].quantita %>
                                     </h4>
+                                    <p>
+                                        <%= lingue[0].price %>
+                                            <%= quantitaStrutture[id].prezzo %>
+                                    </p>
+                                </form>
+                                <% }else{ %>
+                                    <form action="/shop" method="post" name="strutture">
+                                        <input type="hidden" value="<%= item.id %>" name="inputStrutture">
+                                        <div class="non-acquistabile">
+                                            <div class="contorno">
+                                                <button> <h3><%= lingue[0].buy %> <%= item.nome %> </h3> </button></div>
+                                            <h4>
+                                                <%= lingue[0].quantity %>
+                                                    <%= quantitaStrutture[id].quantita %>
+                                            </h4>
+                                            <p>
+                                                <%= lingue[0].price %>
+                                                    <%= quantitaStrutture[id].prezzo %>
+                                            </p>
+                                        </div>
+                                    </form>
+                                    <% } %>
+                                        <% }) %>
+                </li>
+            </div>
+            <li>
+                <% cibo.forEach((item)=>{ %>
+                    <% const id = item.id - 1 %>
+                        <% if(quantita[id].prezzo <= token[0].token){ %>
+                            <form action="/shop" method="post" name="cibo">
+                                <input type="hidden" value="<%= item.id %>" name="inputCibo" id="uno">
+                                <div class="contorno">
+                                    <button><h3> <%= lingue[0].buy %> <%= item.nome %></h3></button>
+                                </div>
+                                <h4>
+                                    <%= lingue[0].quantity %>
+                                        <%= quantita[id].quantita %>
+                                </h4>
+                                <p>
+                                    <%= lingue[0].price %>
+                                        <%= quantita[id].prezzo %>
+                                </p>
+
                             </form>
-                            <% }) %>
-
-
+                            <% }else{ %>
+                                <form action="/shop" method="post" name="cibo">
+                                    <input type="hidden" value="<%= item.id %>" name="inputCibo" id="uno">
+                                    <div class="non-acquistabile">
+                                        <div class="contorno">
+                                            <button><h3> <%= lingue[0].buy %> <%= item.nome %></h3></button>
+                                        </div>
+                                        <h4>
+                                            <%= lingue[0].quantity %>
+                                                <%= quantita[id].quantita %>
+                                        </h4>
+                                        <p>
+                                            <%= lingue[0].price %>
+                                                <%= quantita[id].prezzo %>
+                                        </p>
+                                    </div>
+                                </form>
+                                <% } %>
+                                    <% }) %>
+            </li>
+        </ul>
+    </div>
+    <hr>
+    <div class="row column">
+        <ul class="menu">
+            <li>
+                <a href="#">
+                    <%= lingue[0].discord %>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <%= lingue[0].twitter %>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <%= lingue[0].instagram %>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <%= lingue[0].reddit %>
+                </a>
+            </li>
+        </ul>
+    </div>
 </body>
 
 </html>

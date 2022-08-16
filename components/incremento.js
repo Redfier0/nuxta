@@ -25,8 +25,8 @@ const incremento = {
                         const numeroPersone = persone[0].quantita / cibo.length
                         const fiume = strutture[3].quantita
                         const pozzo = strutture[1].quantita
-                        const aggiungiAcquaFiume = fiume * 4 / 10
-                        const aggiungiAcquaPozzo = pozzo * 3 / 10
+                        const aggiungiAcquaFiume = fiume * 2
+                        const aggiungiAcquaPozzo = pozzo * 1
                         const aggiungiAcqua = aggiungiAcquaFiume + aggiungiAcquaPozzo
 
                         if (cibo.length == 1) {

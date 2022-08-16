@@ -1,39 +1,131 @@
-<html>
+<html lang="en">
 
 <head>
-
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <%- include('./lingue.ejs') %>
+        <title>
+            <%= lingue[0].nuxta %>
+        </title>
 </head>
 
 <body>
-    <%- include("./components/principali.ejs") %>
-        <div class="isola">
-            <a href="/generale">
-                <button>torna all'isola</button>
-            </a>
-            <a href="/shop">
-                <button>shop</button>
-            </a><br>
+    <!-- Start Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <ul class="menu">
+                <a href="/">
+                    <div class="color-menu">
+                        <li class="menu-text">
+                            <%= lingue[0].nuxta %>
+                        </li>
+                    </div>
+                </a>
+            </ul>
         </div>
-        <h2>
-            token
-            <%= token[0].token %>
-        </h2><br>
-        <% cibo.forEach((item)=>{ %>
-            <form action="/vendi" method="post" name="cibo">
-                <input type="hidden" value="<%= item.id %>" name="inputCibo">
-                <% const id = item.id - 1 %>
-                    <button class="btn btn-outline-success"> vendi <%= item.nome %><h2>quantità
-                        <%= quantita[id].quantita %>
-                    </h2></button>
-            </form>
-            <% }) %>
-                <% acqua.forEach((item)=>{ %>
-                    <form action="/vendi" method="post" name="acqua">
-                        <input type="hidden" value="<%= item.id %>" name="inputAcqua">
-                        <button class="btn btn-outline-success"> vendi <%= item.nome %><h2> quantità <%= quantitaAcqua[0].quantita %></h2></button>
+        <div class="top-bar-right">
+            <ul class="menu">
+                <li>
+                    <a href="/logout">
+                        <%= lingue[0].logout %>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- End Top Bar -->
+
+    <div class="top-bar2">
+        <ul class="vertical medium-horizontal menu expanded text-center">
+
+            <li>
+                <a href="/generale">
+                    <div class="color-menu">
+                        <div class="stat">
+                            <%= lingue[0].island %>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="/shop">
+                    <div class="color-menu">
+                        <div class="stat">
+                            <%= lingue[0].shop %>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <div class="stat">
+                    <%= lingue[0].coin %>
+                </div><span><%= token[0].token %> </span>
+            </li>
+            <li>
+        </ul>
+
+    </div>
+    <div class="row">
+        <ul class=" medium-horizontal menu expanded ">
+            <div class="posiziona-in-alto">
+                <li>
+                    <% acqua.forEach((item)=>{ %>
+                        <form action="/vendi" method="post" name="acqua">
+                            <input type="hidden" value="<%= item.id %>" name="inputAcqua">
+                            <div class="contorno">
+                                <button><h3> <%= lingue[0].sell %> <%= item.nome %></h3></button></div>
+                            <h4>
+                                <%= lingue[0].quantity %>
+                                    <%= quantitaAcqua[0].quantita %>
+                            </h4>
+                        </form>
+                        <% }) %>
+                </li>
+            </div>
+            <li>
+                <% cibo.forEach((item)=>{ %>
+                    <form action="/vendi" method="post" name="cibo">
+                        <input type="hidden" value="<%= item.id %>" name="inputCibo">
+                        <% const id = item.id - 1 %>
+                            <div class="contorno">
+                                <button><h3> <%= lingue[0].sell %> <%= item.nome %></h3></button>
+                            </div>
+                            <h4>
+                                <%= lingue[0].quantity %>
+                                    <%= quantita[id].quantita %>
+                            </h4>
                     </form>
                     <% }) %>
-
+            </li>
+        </ul>
+    </div>
+    </div>
+    <hr>
+    <div class="row column">
+        <ul class="menu">
+            <li>
+                <a href="#">
+                    <%= lingue[0].discord %>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <%= lingue[0].twitter %>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <%= lingue[0].instagram %>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <%= lingue[0].reddit %>
+                </a>
+            </li>
+        </ul>
+    </div>
 </body>
 
 </html>

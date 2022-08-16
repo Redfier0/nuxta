@@ -1,0 +1,177 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <%- include('./lingue.ejs') %>
+        <title>
+            <%= lingue[0].nuxta %>
+        </title>
+</head>
+
+<body>
+    <!-- Start Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <ul class="menu">
+                <div class="color-menu">
+                    <li class="menu-text">
+                        <%= lingue[0].nuxta %>
+                    </li>
+                </div>
+            </ul>
+        </div>
+        <div class="top-bar-right">
+            <ul class="menu">
+                <li>
+                    <a href="#logout">
+                        <%= lingue[0].logout %>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- End Top Bar -->
+
+    <div class="top-bar2">
+        <ul class="vertical medium-horizontal menu expanded text-center">
+
+            <li>
+                <a href="#generale">
+                    <div class="color-menu">
+                        <div class="stat">
+                            <%= lingue[0].island %>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="#shop">
+                    <div class="color-menu">
+                        <div class="stat">
+                            <%= lingue[0].shop %>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <div class="stat">
+                    <%= lingue[0].coin %>
+                </div><span>149 </span>
+            </li>
+            <li>
+        </ul>
+
+    </div>
+    <div class="row">
+        <ul class=" medium-horizontal menu expanded ">
+            <div class="posiziona-in-alto">
+                <li>
+                    <form action="/generale" method="post">
+                        <input type="hidden" value="4" name="tutorial">
+                        <div class="contorno">
+                            <button><h3> <%= lingue[0].sell %> water</h3></button></div>
+                        <h4>
+                            <%= lingue[0].quantity %>
+                                175
+                        </h4>
+                    </form>
+                </li>
+            </div>
+            <li>
+                <div class="contorno">
+                    <button><h3> <%= lingue[0].sell %> wheat</h3></button>
+                </div>
+                <h4>
+                    <%= lingue[0].quantity %>
+                        0
+                </h4>
+
+                <div class="contorno">
+                    <button><h3> <%= lingue[0].sell %> apple</h3></button>
+                </div>
+                <h4>
+                    <%= lingue[0].quantity %>
+                        0
+                </h4>
+
+                <div class="contorno">
+                    <button><h3> <%= lingue[0].sell %> rice</h3></button>
+                </div>
+                <h4>
+                    <%= lingue[0].quantity %>
+                        0
+                </h4>
+
+                <div class="contorno">
+                    <button><h3> <%= lingue[0].sell %> tomatoes</h3></button>
+                </div>
+                <h4>
+                    <%= lingue[0].quantity %>
+                        0
+                </h4>
+
+                <div class="contorno">
+                    <button><h3> <%= lingue[0].sell %> carrots</h3></button>
+                </div>
+                <h4>
+                    <%= lingue[0].quantity %>
+                        0
+                </h4>
+
+                <div class="contorno">
+                    <button><h3> <%= lingue[0].sell %> pears</h3></button>
+                </div>
+                <h4>
+                    <%= lingue[0].quantity %>
+                        0
+                </h4>
+
+                <div class="contorno">
+                    <button><h3> <%= lingue[0].sell %> watermelon</h3></button>
+                </div>
+                <h4>
+                    <%= lingue[0].quantity %>
+                        0
+                </h4>
+
+                <div class="contorno">
+                    <button><h3> <%= lingue[0].sell %> salad</h3></button>
+                </div>
+                <h4>
+                    <%= lingue[0].quantity %>
+                        0
+                </h4>
+            </li>
+        </ul>
+    </div>
+    </div>
+    <hr>
+    <div class="row column">
+        <ul class="menu">
+            <li>
+                <a href="#">
+                    <%= lingue[0].discord %>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <%= lingue[0].twitter %>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <%= lingue[0].instagram %>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <%= lingue[0].reddit %>
+                </a>
+            </li>
+        </ul>
+    </div>
+</body>
+
+</html>

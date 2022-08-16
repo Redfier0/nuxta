@@ -20,11 +20,14 @@ const shop = require("./components/shop")
 const incremento = require("./components/incremento")
 const token = require("./components/token")
 const aumentoManuale = require("./components/aumentoManuale")
+const tutorial = require("./components/tutorial")
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.set("view engine", "ejs")
 app.use(cookieParser())
 app.use(session({ secret: "nuxta" }))
+app.use(express.static("./src/assets/img"))
+app.use(express.static(__dirname + '/public'));
 
 function checkLogin(req, res, next) {
     if (req.session.user && req.session.user.loggato === true) {
@@ -52,6 +55,8 @@ app.get('/generale',
     acqua.acqua,
     persone.persone,
     strutture.strutture,
+    tutorial.tutorialPrincipale,
+    tutorial.tutorialSecondario,
     dati.risorse)
 
 app.get('/logout', account.logout)
@@ -66,6 +71,7 @@ app.post('/vendi', shop.handleVendita)
 
 app.post('/shop', shop.handleShop)
 
-app.post('/generale', aumentoManuale.aumentoCibo)
+app.post('/generale', tutorial.handleTutorial, aumentoManuale.aumentoCibo)
+
 
 app.listen(port, () => {})
