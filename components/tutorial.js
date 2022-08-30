@@ -32,9 +32,12 @@ const tutorial = {
     handleTutorial: (req, res, next) => {
         let id_isola = req.session.user.id
         const { body } = req
-        const { tutorial } = body
+        const { tutorial, fineTutorial } = body
         if (tutorial) {
             con.query("UPDATE tutorial SET finito = ? WHERE id_isola = ? AND step = ?", [1, id_isola, tutorial], (error, result) => {})
+        }
+        if (fineTutorial) {
+            con.query("UPDATE isole SET tutorial = ? WHERE id = ?", [1, id_isola], (error, result) => {})
         }
         next()
     }

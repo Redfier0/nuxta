@@ -8,8 +8,9 @@ const aumentoManuale = {
         const { inputMana, perDue } = body
         con.query("SELECT * FROM isole WHERE id = ?", [id_isola], (error, result) => {
             let mana = result[0].mana
+            const evoluzione = result[0].evoluzione
             if (inputMana) {
-                mana = mana + 1
+                mana = mana + (evoluzione + 1)
                 con.query("UPDATE isole SET mana = ? WHERE id = ?", [mana, id_isola], (error, result) => {})
             }
         })

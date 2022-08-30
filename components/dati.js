@@ -13,10 +13,9 @@ const dati = {
             const strutture = req.datiStrutture
             const tutorial = req.tutorial
             const livelloTutorial = req.livelloTutorial
-            const dati = [cibo[0], cibo[1], cibo[2], cibo[3], cibo[4], cibo[5], cibo[6], cibo[7], acqua[0], persone[0], strutture[0], strutture[1], strutture[2], strutture[3]]
+            const dati = [cibo[0], cibo[1], cibo[2], cibo[3], cibo[4], cibo[5], cibo[6], cibo[7], acqua[0], persone[0], strutture[0], strutture[1], strutture[2], strutture[3], strutture[4], strutture[5]]
             res.render("generale", { dati, token, mana, tutorial, livelloTutorial })
         })
     }
 }
-
 module.exports = dati

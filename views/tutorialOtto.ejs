@@ -1,7 +1,7 @@
 <html lang="en">
-<% if(livelloTutorial[3].finito == 1){ %>
+<% if(livelloTutorial[7].finito == 1){ %>
 
-    <%- include('./tutorialCinque.ejs') %>
+    <%- include('./fineTutorial.ejs') %>
 
         <% }else{ %>
 
@@ -45,21 +45,21 @@
 
                 <div class="top-bar2">
                     <ul class="vertical medium-horizontal menu expanded text-center">
-
                         <li>
-                            <a href="#generale">
-                                <div class="color-menu">
-                                    <div class="stat">
+                            <form action="/generale" method="post">
+                                <input type="hidden" value="8" name="tutorial">
+                                <button>
+                                    <div class="stat evidenziato">
                                         <%= lingue[0].island %>
                                     </div>
-                                </div>
-                            </a>
+                                </button>
+                            </form>
                         </li>
                         <li>
                             <a href="#shop">
                                 <div class="color-menu">
                                     <div class="stat">
-                                        <%= lingue[0].shop %>
+                                        <%= lingue[0].sell %>
                                     </div>
                                 </div>
                             </a>
@@ -67,34 +67,62 @@
                         <li>
                             <div class="stat">
                                 <%= lingue[0].coin %>
-                            </div>
-                            <span><div class="evidenziato">149 </div></span>
+                            </div><span>50 </span>
                         </li>
                         <li>
                     </ul>
-
                 </div>
-                <p>fantastico ora comincia a diventare più complesso, quando guadagni abbastanza unità di acqua o cibo puoi venire qui a venderle per guadagnare coin che ti servirenno dopo, proviamo a vendere qualcosa</p>
+                <p>aspetta ancora un attimo e ti faccio giocare in liberta, ma nota che ad ogni cosa che compri i coin scendono in questo caso di 50 ogni volta che compri qulcosa, ma non sarà sempre così facile ogni volta che compri qualcosa il prezzo aumenta
+                    quindi cerca di differenziare il piu possibile per spendere il meno possibile ora ultima cosa torniamo all'isola</p>
                 <div class="row">
                     <ul class=" medium-horizontal menu expanded ">
                         <div class="posiziona-in-alto">
                             <li>
-                                <form action="/generale" method="post">
-                                    <input type="hidden" value="4" name="tutorial">
-                                    <div class="contorno evidenziato">
-                                        <button><h3> <%= lingue[0].sell %> water</h3></button></div>
-                                    <h4>
-                                        <div class="h4">
-                                            <%= lingue[0].quantity %>
-                                                175
-                                        </div>
-                                    </h4>
-                                </form>
+                                <div class="contorno ">
+                                    <button><h3> <%= lingue[0].buy %> home</h3></button></div>
+                                <h4>
+                                    <div class="">
+                                        <%= lingue[0].quantity %>
+                                            1
+                                    </div>
+                                </h4>
+                                <div class="contorno">
+                                    <button><h3> <%= lingue[0].buy %> water well</h3></button></div>
+                                <h4>
+                                    <div class="">
+                                        <%= lingue[0].quantity %>
+                                            0
+                                    </div>
+                                </h4>
+
+                                <div class="contorno">
+                                    <button><h3> <%= lingue[0].buy %> field</h3></button></div>
+                                <h4>
+                                    <div class="">
+                                        <%= lingue[0].quantity %>
+                                            1
+                                    </div>
+                                </h4>
+                                <div class="contorno">
+                                    <button><h3> <%= lingue[0].buy %> river</h3></button></div>
+                                <h4>
+                                    <div class="">
+                                        <%= lingue[0].quantity %>
+                                            1
+                                    </div>
+                                </h4>
                             </li>
                         </div>
                         <li>
                             <div class="contorno">
-                                <button><h3> <%= lingue[0].sell %> wheat</h3></button>
+                                <button><h3> <%= lingue[0].buy %> wheat</h3></button>
+                            </div>
+                            <h4>
+                                <%= lingue[0].quantity %>
+                                    50
+                            </h4>
+                            <div class="contorno">
+                                <button><h3> <%= lingue[0].buy %> apple</h3></button>
                             </div>
                             <h4>
                                 <%= lingue[0].quantity %>
@@ -102,7 +130,7 @@
                             </h4>
 
                             <div class="contorno">
-                                <button><h3> <%= lingue[0].sell %> apple</h3></button>
+                                <button><h3> <%= lingue[0].buy %> rice</h3></button>
                             </div>
                             <h4>
                                 <%= lingue[0].quantity %>
@@ -110,7 +138,7 @@
                             </h4>
 
                             <div class="contorno">
-                                <button><h3> <%= lingue[0].sell %> rice</h3></button>
+                                <button><h3> <%= lingue[0].buy %> tomatoes</h3></button>
                             </div>
                             <h4>
                                 <%= lingue[0].quantity %>
@@ -118,7 +146,7 @@
                             </h4>
 
                             <div class="contorno">
-                                <button><h3> <%= lingue[0].sell %> tomatoes</h3></button>
+                                <button><h3> <%= lingue[0].buy %> carrots</h3></button>
                             </div>
                             <h4>
                                 <%= lingue[0].quantity %>
@@ -126,7 +154,7 @@
                             </h4>
 
                             <div class="contorno">
-                                <button><h3> <%= lingue[0].sell %> carrots</h3></button>
+                                <button><h3> <%= lingue[0].buy %> pears</h3></button>
                             </div>
                             <h4>
                                 <%= lingue[0].quantity %>
@@ -134,7 +162,7 @@
                             </h4>
 
                             <div class="contorno">
-                                <button><h3> <%= lingue[0].sell %> pears</h3></button>
+                                <button><h3> <%= lingue[0].buy %> watermelon</h3></button>
                             </div>
                             <h4>
                                 <%= lingue[0].quantity %>
@@ -142,15 +170,7 @@
                             </h4>
 
                             <div class="contorno">
-                                <button><h3> <%= lingue[0].sell %> watermelon</h3></button>
-                            </div>
-                            <h4>
-                                <%= lingue[0].quantity %>
-                                    0
-                            </h4>
-
-                            <div class="contorno">
-                                <button><h3> <%= lingue[0].sell %> salad</h3></button>
+                                <button><h3> <%= lingue[0].buy %> salad</h3></button>
                             </div>
                             <h4>
                                 <%= lingue[0].quantity %>
@@ -203,10 +223,6 @@
                     right: 100;
                     background-color: white;
                     border: 20px white solid;
-                }
-                
-                .h4 {
-                    color: black;
                 }
                 
                 .contorno {

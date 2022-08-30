@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/css/style.css" rel="stylesheet" type="text/css">
+    <title>
+        <%= lingue[0].nuxta %>
+    </title>
+    <%- include('./lingue.ejs') %>
+</head>
+
+<body>
+    <!-- Start Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <ul class="menu">
+                <div class="color-menu">
+                    <li class="menu-text">
+                        <div class="glitch" data-text="Nuxta">
+                            <%= lingue[0].nuxta %>
+                        </div>
+                    </li>
+                </div>
+            </ul>
+        </div>
+        <div class="top-bar-right">
+            <ul class="menu">
+                <li>
+                    <a href="">
+                        <div class="href-grandezza">
+                            <%= lingue[0].logout %>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- End Top Bar -->
+    <div class="top-bar2">
+        <ul class="vertical medium-horizontal menu expanded text-center">
+            <li>
+                <a href="#shop">
+                    <div class="color-menu">
+                        <div class="stat">
+                            <%= lingue[0].shop %>
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="#vendi">
+                    <div class="color-menu">
+                        <div class="stat">
+                            <%= lingue[0].sell %>
+                        </div>
+                    </div>
+                </a>
+            </li>
+
+            <li>
+                <div class="stat">
+                    <%= lingue[0].coin %>
+                </div><span>50 </span>
+            </li>
+            <li>
+                <div class="stat">
+                    <%= lingue[0].mana %>
+                </div><span>100 </span>
+            </li>
+        </ul>
+
+        <ul class="vertical medium-horizontal menu expanded text-center">
+            <li>
+                <div class="stat">
+                    wheat
+                </div><span>50 </span>
+            </li>
+            <li>
+                <div class="stat">
+                    water
+                </div><span>75 </span>
+            </li>
+            <li>
+                <div class="stat">
+                    people
+                </div><span>6 </span>
+            </li>
+            <li>
+                <div class="stat">
+                    home
+                </div><span>1 </span>
+            </li>
+            <li>
+                <div class="stat">
+                    water well
+                </div><span>0 </span>
+            </li>
+            <li>
+                <div class="stat">
+                    field
+                </div><span>1 </span>
+            </li>
+            <li>
+                <div class="stat">
+                    river
+                </div><span>1 </span>
+            </li>
+        </ul>
+    </div>
+    <p>e ora buona fortuna sta tutto nelle tue mani diventa la potenza che conquista tutti, fammelo sapere quando ci riesci verrò a congratularmi di persona e buona fortuna ancora!</p>
+    <form action="/generale" method="post">
+        <input type="hidden" value="1" name="fineTutorial">
+        <button style="height: 100%; width: 100%;">.</button>
+    </form>
+    <div class="row column">
+        <ul class="menu">
+            <li>
+                <a href="#">
+                    <%= lingue[0].discord %>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <%= lingue[0].twitter %>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <%= lingue[0].instagram %>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <%= lingue[0].reddit %>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+
+</body>
+<style type="text/css">
+    div,
+    span {
+        color: rgba(0, 0, 0, 0.300);
+    }
+    
+    body {
+        background-color: rgba(0, 0, 0, 0.100);
+    }
+    
+    p {
+        position: absolute;
+        width: 350px;
+        top: 300px;
+        right: 100;
+        background-color: white;
+        border: 20px white solid;
+    }
+</style>
+
+</html>

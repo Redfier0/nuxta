@@ -1,7 +1,7 @@
 <html lang="en">
-<% if(livelloTutorial[3].finito == 1){ %>
+<% if(livelloTutorial[4].finito == 1){ %>
 
-    <%- include('./tutorialCinque.ejs') %>
+    <%- include('./tutorialSei.ejs') %>
 
         <% }else{ %>
 
@@ -56,40 +56,38 @@
                             </a>
                         </li>
                         <li>
-                            <a href="#shop">
-                                <div class="color-menu">
-                                    <div class="stat">
+                            <form action="/generale" method="post">
+                                <input type="hidden" value="5" name="tutorial">
+                                <button>
+                                    <div class="stat evidenziato">
                                         <%= lingue[0].shop %>
-                                    </div>
-                                </div>
-                            </a>
+                                     </div>
+                                </button>
+                            </form>
                         </li>
                         <li>
                             <div class="stat">
                                 <%= lingue[0].coin %>
                             </div>
-                            <span><div class="evidenziato">149 </div></span>
+                            <span>150 </span>
                         </li>
                         <li>
                     </ul>
 
                 </div>
-                <p>fantastico ora comincia a diventare più complesso, quando guadagni abbastanza unità di acqua o cibo puoi venire qui a venderle per guadagnare coin che ti servirenno dopo, proviamo a vendere qualcosa</p>
+                <p>come vedi l'acqua è diminuita mentre i coin sono aumentati ma a cosa servono questi coin? clicca sullo shop e scoprilo</p>
                 <div class="row">
                     <ul class=" medium-horizontal menu expanded ">
                         <div class="posiziona-in-alto">
                             <li>
-                                <form action="/generale" method="post">
-                                    <input type="hidden" value="4" name="tutorial">
-                                    <div class="contorno evidenziato">
-                                        <button><h3> <%= lingue[0].sell %> water</h3></button></div>
-                                    <h4>
-                                        <div class="h4">
-                                            <%= lingue[0].quantity %>
-                                                175
-                                        </div>
-                                    </h4>
-                                </form>
+                                <div class="contorno">
+                                    <button><h3> <%= lingue[0].sell %> water</h3></button></div>
+                                <h4>
+                                    <div class="">
+                                        <%= lingue[0].quantity %>
+                                            75
+                                    </div>
+                                </h4>
                             </li>
                         </div>
                         <li>
@@ -203,10 +201,6 @@
                     right: 100;
                     background-color: white;
                     border: 20px white solid;
-                }
-                
-                .h4 {
-                    color: black;
                 }
                 
                 .contorno {

@@ -17,6 +17,15 @@ const home = {
         } else {
             res.redirect("/login")
         }
+    },
+    about: (req, res) => {
+        if (req.session.user && req.session.user.loggato === true) {
+            const loggato = req.session.user.loggato
+            res.render("about", { loggato })
+        } else {
+            const loggato = null
+            res.render("about", { loggato })
+        }
     }
 }
 

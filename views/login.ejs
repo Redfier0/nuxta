@@ -18,7 +18,9 @@
                 <a href="/">
                     <div class="color-menu">
                         <li class="menu-text">
-                            <%= lingue[0].nuxta %>
+                            <div class="glitch" data-text="Nuxta">
+                                <%= lingue[0].nuxta %>
+                            </div>
                         </li>
                     </div>
                 </a>
@@ -29,7 +31,8 @@
     <ul class="text-center">
         <div class="login-box">
             <h2>
-                <%= lingue[0].login %>
+                <div class="href-grandezza">
+                    <%= lingue[0].login %>
             </h2>
             <form action="/login" method="post">
                 <div class="user-box">
@@ -47,7 +50,7 @@
                     <button><%= lingue[0].signup %></button>
                 </form>
             </div>
-        </div>
+            </div>
     </ul>
 </body>
 <style type="text/css">

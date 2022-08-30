@@ -27,13 +27,15 @@
 
             <body>
                 <!-- Start Top Bar -->
-                <div class="top-bar">
+                <div class="top-bar" style="background: linear-gradient( #2a467b, #0f1624);">
                     <div class="top-bar-left">
                         <ul class="menu">
                             <a href="/">
                                 <div class="color-menu">
                                     <li class="menu-text">
-                                        <%= lingue[0].nuxta %>
+                                        <div class="glitch" data-text="Nuxta">
+                                            <%= lingue[0].nuxta %>
+                                        </div>
                                     </li>
                                 </div>
                             </a>
@@ -43,7 +45,9 @@
                         <ul class="menu">
                             <li>
                                 <a href="/logout">
-                                    <%= lingue[0].logout %>
+                                    <div class="href-grandezza">
+                                        <%= lingue[0].logout %>
+                                    </div>
                                 </a>
                             </li>
                         </ul>
@@ -56,6 +60,7 @@
                             <a href="/shop">
                                 <div class="color-menu">
                                     <div class="stat">
+                                        <img src="./immagini/shop.png" class="img-icone"><br>
                                         <%= lingue[0].shop %>
                                     </div>
                                 </div>
@@ -65,6 +70,7 @@
                             <a href="/vendi">
                                 <div class="color-menu">
                                     <div class="stat">
+                                        <img src="./immagini/vendi.png" class="img-icone"><br>
                                         <%= lingue[0].sell %>
                                     </div>
                                 </div>
@@ -73,11 +79,14 @@
 
                         <li>
                             <div class="stat">
+                                <img src="./immagini/coin.png" class="img-icone"><br>
                                 <%= lingue[0].coin %>
                             </div><span><%= token %> </span>
                         </li>
                         <li>
                             <div class="stat">
+                                <img src="./immagini/mana.png" class="img-icone">
+                                <br>
                                 <%= lingue[0].mana %>
                             </div><span><%= mana %> </span>
                         </li>
@@ -86,12 +95,14 @@
                     <ul class="vertical medium-horizontal menu expanded text-center">
                         <li>
                             <div class="stat">
+                                <img src="./immagini/<%= dati[0].img %>" class="img-icone"><br>
                                 <%= dati[0].nome %>
                             </div><span><%= dati[0].quantita %> </span>
                         </li>
                         <% if(dati[1].quantita > 1){ %>
                             <li>
                                 <div class="stat">
+                                    <img src="./immagini/<%= dati[1].img %>" class="img-icone"><br>
                                     <%= dati[1].nome %>
                                 </div><span><%= dati[1].quantita %> </span>
                             </li>
@@ -100,6 +111,7 @@
                                 <% if(dati[2].quantita > 1){ %>
                                     <li>
                                         <div class="stat">
+                                            <img src="./immagini/<%= dati[2].img %>" class="img-icone"><br>
                                             <%= dati[2].nome %>
                                         </div><span><%= dati[2].quantita %> </span>
                                     </li>
@@ -108,6 +120,7 @@
                                         <% if(dati[3].quantita > 1){ %>
                                             <li>
                                                 <div class="stat">
+                                                    <img src="./immagini/<%= dati[3].img %>" class="img-icone"><br>
                                                     <%= dati[3].nome %>
                                                 </div><span><%= dati[3].quantita %> </span>
                                             </li>
@@ -116,6 +129,7 @@
                                                 <% if(dati[4].quantita > 1){ %>
                                                     <li>
                                                         <div class="stat">
+                                                            <img src="./immagini/<%= dati[4].img %>" class="img-icone"><br>
                                                             <%= dati[4].nome %>
                                                         </div><span><%= dati[4].quantita %> </span>
                                                     </li>
@@ -124,6 +138,7 @@
                                                         <% if(dati[5].quantita > 1){ %>
                                                             <li>
                                                                 <div class="stat">
+                                                                    <img src="./immagini/<%= dati[5].img %>" class="img-icone"><br>
                                                                     <%= dati[5].nome %>
                                                                 </div><span><%= dati[5].quantita %> </span>
                                                             </li>
@@ -132,6 +147,7 @@
                                                                 <% if(dati[6].quantita > 1){ %>
                                                                     <li>
                                                                         <div class="stat">
+                                                                            <img src="./immagini/<%= dati[6].img %>" class="img-icone"><br>
                                                                             <%= dati[6].nome %>
                                                                         </div><span><%= dati[6].quantita %> </span>
                                                                     </li>
@@ -140,6 +156,7 @@
                                                                         <% if(dati[7].quantita > 1){ %>
                                                                             <li>
                                                                                 <div class="stat">
+                                                                                    <img src="./immagini/<%= dati[7].img %>" class="img-icone"><br>
                                                                                     <%= dati[7].nome %>
                                                                                 </div><span><%= dati[7].quantita %> </span>
                                                                             </li>
@@ -147,37 +164,73 @@
 
                                                                                 <li>
                                                                                     <div class="stat">
+                                                                                        <img src="./immagini/acqua.png" class="img-icone"><br>
                                                                                         <%= dati[8].nome %>
                                                                                     </div><span><%= dati[8].quantita %> </span>
                                                                                 </li>
                                                                                 <li>
                                                                                     <div class="stat">
+                                                                                        <img src="./immagini/persone.png" class="img-icone"><br>
                                                                                         <%= dati[9].nome %>
                                                                                     </div><span><%= dati[9].quantita %> </span>
                                                                                 </li>
-                                                                                <li>
-                                                                                    <div class="stat">
-                                                                                        <%= dati[10].nome %>
-                                                                                    </div><span><%= dati[10].quantita %> </span>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <div class="stat">
-                                                                                        <%= dati[11].nome %>
-                                                                                    </div><span><%= dati[11].quantita %> </span>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <div class="stat">
-                                                                                        <%= dati[12].nome %>
-                                                                                    </div><span><%= dati[12].quantita %> </span>
-                                                                                </li>
-                                                                                <li>
-                                                                                    <div class="stat">
-                                                                                        <%= dati[13].nome %>
-                                                                                    </div><span><%= dati[13].quantita %> </span>
-                                                                                </li>
+                                                                                <% if(dati[10].quantita >= 1){ %>
+                                                                                    <li>
+                                                                                        <div class="stat">
+                                                                                            <img src="./immagini/<%= dati[10].img %>" class="img-icone"><br>
+                                                                                            <%= dati[10].nome %>
+                                                                                        </div><span><%= dati[10].quantita %> </span>
+                                                                                    </li>
+                                                                                    <% } %>
+                                                                                        <% if(dati[11].quantita >= 1){ %>
+                                                                                            <li>
+                                                                                                <div class="stat">
+                                                                                                    <img src="./immagini/<%= dati[11].img %>" class="img-icone"><br>
+                                                                                                    <%= dati[11].nome %>
+                                                                                                </div><span><%= dati[11].quantita %> </span>
+                                                                                            </li>
+                                                                                            <% } %>
+                                                                                                <% if(dati[12].quantita >= 1){ %>
+                                                                                                    <li>
+                                                                                                        <div class="stat">
+                                                                                                            <img src="./immagini/<%= dati[12].img %>" class="img-icone"><br>
+                                                                                                            <%= dati[12].nome %>
+                                                                                                        </div><span><%= dati[12].quantita %> </span>
+                                                                                                    </li>
+                                                                                                    <% } %>
+                                                                                                        <% if(dati[13].quantita >= 1){ %>
+                                                                                                            <li>
+                                                                                                                <div class="stat">
+                                                                                                                    <img src="./immagini/<%= dati[13].img %>" class="img-icone"><br>
+                                                                                                                    <%= dati[13].nome %>
+                                                                                                                </div><span><%= dati[13].quantita %> </span>
+                                                                                                            </li>
+                                                                                                            <% } %>
+                                                                                                                <% if(dati[14].quantita >= 1){ %>
+                                                                                                                    <li>
+                                                                                                                        <div class="stat">
+                                                                                                                            <img src="./immagini/<%= dati[14].img %>" class="img-icone"><br>
+                                                                                                                            <%= dati[14].nome %>
+                                                                                                                        </div><span><%= dati[14].quantita %> </span>
+                                                                                                                    </li>
+                                                                                                                    <% } %>
+                                                                                                                        <% if(dati[15].quantita >= 1){ %>
+                                                                                                                            <li>
+                                                                                                                                <div class="stat">
+                                                                                                                                    <img src="./immagini/<%= dati[15].img %>" class="img-icone"><br>
+                                                                                                                                    <%= dati[15].nome %>
+                                                                                                                                </div><span><%= dati[15].quantita %> </span>
+                                                                                                                            </li>
+                                                                                                                            <% } %>
                     </ul>
                 </div>
-                <button id="but" onclick="aggiungiMana()" style="height: 100%; width: 100%;">.</button>
+                <form action="/generale" method="post">
+                    <input type="hidden" value="1" name="evoluzione">
+                    <button>evoluzione</button>
+                </form>
+                <div class="immagine-sfondo">
+                    <button onclick="aggiungiMana()" style="height: 50%; width: 100%;">.</button>
+                </div>
                 <div class="row column">
                     <ul class="menu">
                         <li>
@@ -217,5 +270,18 @@
                 }
             </script>
             <% } %>
+
+                <style>
+                    body {
+                        background: #0f1624;
+                    }
+                    
+                    a,
+                    div,
+                    button,
+                    span {
+                        color: white;
+                    }
+                </style>
 
 </html>

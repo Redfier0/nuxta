@@ -24,7 +24,9 @@
                         <ul class="menu">
                             <div class="color-menu">
                                 <li class="menu-text">
-                                    <%= lingue[0].nuxta %>
+                                    <div class="glitch" data-text="Nuxta">
+                                        <%= lingue[0].nuxta %>
+                                    </div>
                                 </li>
                             </div>
                         </ul>
@@ -33,7 +35,9 @@
                         <ul class="menu">
                             <li>
                                 <a href="">
-                                    <%= lingue[0].logout %>
+                                    <div class="href-grandezza">
+                                        <%= lingue[0].logout %>
+                                    </div>
                                 </a>
                             </li>
                         </ul>
@@ -69,7 +73,8 @@
                         <li>
                             <div class="stat">
                                 <%= lingue[0].mana %>
-                            </div><span>99 </span>
+                            </div>
+                            <span><div class="evidenziato">99 </div></span>
                         </li>
                     </ul>
 
@@ -77,12 +82,13 @@
                         <li>
                             <div class="stat">
                                 wheat
-                            </div><span>50 </span>
+                            </div><span>0 </span>
                         </li>
                         <li>
                             <div class="stat">
                                 water
-                            </div><span>168 </span>
+                            </div>
+                            <span><div class="evidenziato">168 </div></span>
                         </li>
                         <li>
                             <div class="stat">
@@ -111,6 +117,7 @@
                         </li>
                     </ul>
                 </div>
+                <p>ben venuto in nuxta, per cominciare pigia su un punto a caso dello sfondo e fai attenzione all'acqua e ai mana</p>
                 <form action="/generale" method="post">
                     <input type="hidden" value="1" name="tutorial">
                     <button style="height: 100%; width: 100%;">.</button>
@@ -142,6 +149,25 @@
 
 
             </body>
+            <style type="text/css">
+                div,
+                span {
+                    color: rgba(0, 0, 0, 0.300);
+                }
+                
+                body {
+                    background-color: rgba(0, 0, 0, 0.100);
+                }
+                
+                p {
+                    position: absolute;
+                    width: 350px;
+                    top: 300px;
+                    right: 100;
+                    background-color: white;
+                    border: 20px white solid;
+                }
+            </style>
             <% } %>
 
 </html>
