@@ -4401,3 +4401,27 @@ body {
 .img-icone-shop-sell {
     text-align: center;
 }
+
+#categoria-cibo {
+    display: none;
+}
+
+#categoria-cibo:target {
+    display: block;
+}
+
+#categoria-strutture {
+    display: none;
+}
+
+#categoria-strutture:target {
+    display: block;
+}
+
+#categoria-acqua {
+    display: none;
+}
+
+#categoria-acqua:target {
+    display: block;
+}

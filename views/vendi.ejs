@@ -70,77 +70,143 @@
                     <%= lingue[0].coin %>
                 </div><span><%= token[0].token %> </span>
             </li>
-            <li>
         </ul>
+        <div class="top-bar2">
+            <ul class="vertical medium-horizontal menu expanded text-center">
+
+                <li>
+                    <a href="#categoria-acqua">
+                        <div class="color-menu">
+                            <div class="stat">
+                                <button>
+                                <img src="./immagini/acqua.png" class="img-icone"><br>
+                                <%= lingue[0].water %>
+                            </button>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#categoria-cibo">
+                        <div class="color-menu">
+                            <div class="stat">
+                                <button>
+                                <img src="./immagini/categoria_cibo.png" class="img-icone"><br>
+                                <%= lingue[0].food %>
+                            </button>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
 
     </div>
     <div class="row">
         <ul class=" medium-horizontal menu expanded ">
             <div class="posiziona-in-alto">
                 <li>
-                    <% acqua.forEach((item)=>{ %>
-                        <% if(quantitaAcqua[0].quantita > 100){ %>
-                            <form action="/vendi" method="post" name="acqua">
-                                <input type="hidden" value="<%= item.id %>" name="inputAcqua">
-                                <div class="contorno">
-                                    <button>                            <img src="./immagini/acqua.png" class="img-icone">                                    <h3> <%= lingue[0].sell %> <%= item.nome %></h3></button></div>
-                                <h4 style="color: white;">
-                                    <%= lingue[0].quantity %>
-                                        <%= quantitaAcqua[0].quantita %>
-                                </h4>
-                            </form>
-                            <br>
-                            <% } else { %>
-                                <form action="/vendi" method="post" name="acqua">
+                    <div id="categoria-acqua">
+                        <% acqua.forEach((item)=>{ %>
+                            <% if(quantitaAcqua[0].quantita > 100){ %>
+                                <form action="/shop#categoria-acqua" method="post" name="acqua" style="width:fit-content;   margin-left: 35%; margin-right:35%;">
                                     <input type="hidden" value="<%= item.id %>" name="inputAcqua">
-                                    <div class="non-acquistabile">
-                                        <div class="contorno">
-                                            <button>                            <img src="./immagini/acqua.png" class="img-icone">                                            <h3> <%= lingue[0].sell %> <%= item.nome %></h3></button></div>
-                                        <h4>
-                                            <%= lingue[0].quantity %>
-                                                <%= quantitaAcqua[0].quantita %>
-                                        </h4>
+                                    <div class="contorno"><button>
+                                            <ul class="vertical medium-horizontal menu expanded text-center" style="width:390px;">
+                                                <img src="./immagini/acqua.png" class="img-icone">
+                                                    <li>
+                                                        <h3  style="width:fit-content">
+                                                             <%= lingue[0].sell %> <%= item.nome %>
+                                                            </h3>
+                                                        </li>
+                                                        <li> 
+                                                            <h4 style="color: white;">
+                                                                 <%= quantitaAcqua[0].quantita %>
+                                                            </h4>
+                                                        </li>
+                                                    </ul>
+                                                </button>
                                     </div>
-                                </form>
-                                <br>
-                                <% } %>
-
-                                    <% }) %>
-                </li>
-            </div>
-            <li>
-                <% cibo.forEach((item)=>{ %>
-                    <% const id = item.categorie_cibo - 1 %>
-                        <% if (item.nome != "vuoto"){ %>
-                            <% if(quantita[id].quantita > 100){ %>
-                                <form action="/vendi" method="post" name="cibo">
-                                    <input type="hidden" value="<%= item.categorie_cibo%>" name="inputCibo" id="uno">
-                                    <div class="contorno">
-                                        <button><img src="./immagini/<%= item.img %>" class="img-icone"> <h3> <%= lingue[0].buy %> <%= item.nome %></h3></button>
-                                    </div>
-                                    <h4>
-                                        <%= lingue[0].quantity %>
-                                            <%= quantita[id].quantita %>
-                                    </h4>
                                 </form>
                                 <br>
                                 <% }else{ %>
-                                    <form action="/vendi" method="post" name="cibo">
-                                        <input type="hidden" value="<%= item.categorie_cibo%>" name="inputCibo" id="uno">
-                                        <div class="non-acquistabile">
-                                            <div class="contorno">
-                                                <button><img src="./immagini/<%= item.img %>" class="img-icone"> <h3> <%= lingue[0].buy %> <%= item.nome %></h3></button>
-                                            </div>
-                                            <h4>
-                                                <%= lingue[0].quantity %>
-                                                    <%= quantita[id].quantita %>
-                                            </h4>
+                                    <form action="/shop#categoria-acqua" method="post" name="acqua" style="width:fit-content;   margin-left: 35%; margin-right:35%;">
+                                        <input type="hidden" value="<%= item.id %>" name="inputAcqua">
+                                        <div class="contorno"><button>
+                                                <ul class="vertical medium-horizontal menu expanded text-center" style="width:390px;">
+                                                    <img src="./immagini/acqua.png" class="img-icone">
+                                                        <li>
+                                                            <h3  style="width:fit-content">
+                                                                 <%= lingue[0].sell %> <%= item.nome %>
+                                                                </h3>
+                                                            </li>
+                                                            <li> 
+                                                                <h4 style="color: white;">
+                                                                     <div class="non-acquistabile">  <%= quantitaAcqua[0].quantita %></div> 
+                                                                </h4>
+                                                            </li>
+                                                        </ul>
+                                                    </button>
                                         </div>
                                     </form>
                                     <br>
                                     <% }  %>
-                                        <% }else{ }%>
-                                            <% }) %>
+                                        <% }) %>
+                    </div>
+                </li>
+            </div>
+            <li>
+                <div id="categoria-cibo">
+                    <% cibo.forEach((item)=>{ %>
+                        <% const id = item.categorie_cibo - 1 %>
+                            <% if (item.nome != "vuoto"){ %>
+                                <% if(quantita[id].prezzo <= token[0].token){ %>
+                                    <form action="/shop#categoria-cibo" method="post" name="cibo" style="width:fit-content;   margin-left: 35%; margin-right:35%;">
+                                        <input type="hidden" value="<%= item.categorie_cibo %>" name="inputCibo" id="uno">
+                                        <div class="contorno"><button>
+                                        <ul class="vertical medium-horizontal menu expanded text-center" style="width:390px;">
+                                                <img src="./immagini/<%= item.img %>" class="img-icone"> 
+                                                <li>
+                                                    <h3  style="width:fit-content">
+                                                         <%= lingue[0].sell %> <%= item.nome %>
+                                                        </h3>
+                                                    </li>
+                                                    <li> 
+                                                        <h4>
+                                                        <%= quantita[id].quantita %> </h4>
+                                                    </li>
+                                                </ul>
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <br>
+                                    <% }else{ %>
+                                        <form action="/shop" method="post" name="cibo" style="width:fit-content; margin-left: 35%; margin-right:35%;">
+                                            <div class="non-acquistabile">
+                                                <input type="hidden" value="<%= item.categorie_cibo %>" name="inputCibo" id="uno">
+                                                <div class="contorno"><button>
+                                            <ul class="vertical medium-horizontal menu expanded text-center" style="width:390px;">
+                                                    <img src="./immagini/<%= item.img %>" class="img-icone"> 
+                                                    <li>
+                                                        <h3  style="width:fit-content">
+                                                             <%= lingue[0].sell %> <%= item.nome %>
+                                                            </h3>
+                                                        </li>
+                                                        <li> 
+                                                            <div class="non-acquistabile">
+                                                            <h4>
+                                                            <%= quantita[id].quantita %> </h4></div>
+                                                        </li>
+                                                    </ul>
+                                                </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <br>
+                                        <% }  %>
+                                            <% }else{} %>
+                                                <% }) %>
+                </div>
             </li>
         </ul>
     </div>
@@ -182,6 +248,10 @@
     button,
     span {
         color: white;
+    }
+    
+    form {
+        background: url("./immagini/sellcontainer.png") no-repeat;
     }
 </style>
 
