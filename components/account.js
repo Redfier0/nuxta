@@ -17,6 +17,8 @@ const account = {
             const { body } = req
             const { wallet, password } = body
             con.query("SELECT * FROM account WHERE wallet = ?", [wallet], async(error, result) => {
+                console.log(result)
+                console.log(process.env.DATABASE_PASSWORD)
                 const id_account = result[0].id
                 const passwordAccount = result[0].password
                 con.query("SELECT * FROM isole WHERE id_account = ?", [id_account], async(error, result) => {
