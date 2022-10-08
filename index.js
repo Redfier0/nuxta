@@ -1,9 +1,10 @@
+require('dotenv').config({ path: './env.env' });
 const express = require("express")
 const session = require("express-session")
 const { urlencoded } = require("express")
 const cookieParser = require("cookie-parser")
 const app = express()
-const port = 3000
+const port = process.env.PORT || 3000
 const bodyParser = require("body-parser")
 const account = require("./components/account")
 const acqua = require("./components/acqua")
