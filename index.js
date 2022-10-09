@@ -20,8 +20,8 @@ const aumentoManuale = require("./components/aumentoManuale")
 const tutorial = require("./components/tutorial")
 const evoluzione = require("./components/evoluzione")
 
-app.use(bodyParser.urlencoded({ extended: true }))
 app.set("view engine", "ejs")
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(cookieParser())
 app.use(session({ secret: "nuxta" }))
 
