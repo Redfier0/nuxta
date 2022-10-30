@@ -1,4 +1,4 @@
-require('dotenv').config({ path: './env.env' });
+require('dotenv').config({ path: '.env' });
 const mysql = require("mysql")
 
 const con = mysql.createConnection({
@@ -8,5 +8,10 @@ const con = mysql.createConnection({
     port: process.env.DATABASE_PORT,
     database: process.env.DATABASE_NAME
 })
+
+con.connect(function(err) {
+    if (err) throw err;
+    console.log("Connected!");
+});
 
 module.exports = con
